@@ -1,0 +1,21 @@
+[
+    {
+        "id": 0,
+        "name" : "Coca-cola", 
+        "figure" : "./images/sponsors/Figure/cocacolaFigure.jpg",
+        "logo" : "./images/sponsors/Logo/cocacolalogo.jpg"
+    },
+    {
+        "id": 1,
+        "name" : "Ville de paris", 
+        "figure" : "./images/sponsors/Figure/paris.jpg",
+        "logo" : "./images/sponsors/Logo/nvlogoparis.jpg"
+    },
+    {
+        "id": 2,
+        "name" : "Instagram", 
+        "figure" : "./images/sponsors/Figure/leaves_plant_green_136320_1024x768.jpg",
+        "logo" : "./images/sponsors/Logo/instagram_logo.png"
+    }
+
+]
