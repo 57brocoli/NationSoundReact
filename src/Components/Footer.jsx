@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from '../Assets/Image/logo.jpg';
-import snapchat_logo from '../Assets/Image/logo.jpg';
-import youtube_logo from '../Assets/Image/youtube_logo.png';
-import twitter_logo from '../Assets/Image/twitter_logo.png';
-import linkedin_logo from '../Assets/Image/linkedin_logo.png';
-import facebook_logo from '../Assets/Image/facebook_logo.png';
-import instagram_logo from '../Assets/Image/instagram_logo.png';
+import logo from '/logo.jpg';
+import snapchat_logo from '/images/footer/snapchat_logo.png';
+import youtube_logo from '/images/footer/youtube_logo.png';
+import twitter_logo from '/images/footer/twitter_logo.png';
+import linkedin_logo from '/images/footer/linkedin_logo.png';
+import facebook_logo from '/images/footer/facebook_logo.png';
+import instagram_logo from '/images/footer/instagram_logo.png';
 
 const Footer = () => {
     return (
