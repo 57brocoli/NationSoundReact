@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Navigation from '../Navigation';
-import { useLoaderData } from 'react-router-dom';
 import axios from "axios"
-import Footer from '../Footer';
 
-const BilletterieComponent = ({height}) => {
-
-    //on recupère les donnés du fetch
-	const view = useLoaderData()
+const BilletterieComponent = ({view, height}) => {
 
     const figure = {
         uri: 'https://pixelevent.site/assets/uploads/figure/',
@@ -27,6 +21,7 @@ const BilletterieComponent = ({height}) => {
     const redirect = () =>{
         alert('Vous allez être rediriger vers le site de la billetterie')
     }
+    
     return (
         <div>
             <header style={{backgroundImage:`url(${figure.uri}${view.headerImage.name})`}} className='centerImage'>

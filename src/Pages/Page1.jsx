@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Navigation from '../Components/Navigation';
-import Billetterie from '../Components/Page1Components/BilletterieComponent';
+import BilletterieComponent from '../Components/Page1Components/BilletterieComponent';
 import AboutComponent from '../Components/Page1Components/AboutComponent';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Footer from '../Components/Footer';
@@ -9,7 +9,6 @@ import ActualiteComponent from '../Components/Page1Components/ActualiteComponent
 import SponsorComponent from '../Components/Page1Components/SponsorComponent';
 import MapComponent from '../Components/Page1Components/MapComponent';
 import ArtisteComponent from '../Components/Page1Components/ArtisteComponent';
-
 
 const Page1 = ({billetterie, about, programme, artiste, actualite, sponsor, map}) => {
 
@@ -40,7 +39,7 @@ const Page1 = ({billetterie, about, programme, artiste, actualite, sponsor, map}
     return (
         <div className='backgroundColor'>
             <Navigation/>
-            {billetterie && <Billetterie height={height}/>}
+            {billetterie && <BilletterieComponent view={view} height={height}/>}
             {about && <AboutComponent view={view} height={height}/>}
             {programme && <ProgrammeConponent view={view} state={state} height={height}/>}
             {artiste && <ArtisteComponent state={state} height={height}/>}

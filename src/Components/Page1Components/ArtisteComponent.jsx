@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Navigation from '../Navigation';
 import data from '../../Assets/Data/ArtisteData.json'
 import { NavLink } from 'react-router-dom';
 

@@ -10,11 +10,12 @@ const EpisodeComponent = ({id, height}) => {
     const [episodes, setEpisodes] = useState([])
     useEffect(()=>{
         axios
-            .get(`https://pixelevent.site/api/episodes`)
+            .get(`https://pixelevent.site/api/episodes/`)
             .then(res=> setEpisodes(res.data['hydra:member']))
     },[])
 
     const episode = episodes.filter(episode => episode.id === Number(id)).at(0)
+    
     if (episode) {
         var artisteId= episode.artiste.id
     }
@@ -27,7 +28,7 @@ const EpisodeComponent = ({id, height}) => {
         uri : 'https://pixelevent.site/assets/uploads/artiste/'
     }
 
-    console.log(episode);
+
     return (
         <div className=' text-white' style={{minHeight: height}}>
             {episode &&

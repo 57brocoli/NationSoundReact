@@ -65,7 +65,6 @@ const HomeComponent = ({view}) => {
                                         {section.images[0] &&
                                             <div key={index} style={{backgroundImage:`url(${image.uri}${section.images[0].name})`}} className='container centerImage rounded'></div>
                                         }
-                                        
                                     </div>
                                 }
                                 {section.display === 'style2' &&
@@ -92,28 +91,28 @@ const HomeComponent = ({view}) => {
                                         </div>
                                     </div>
                                 }
-                                    {section.title === 'Hotel' &&
-                                        <div className='container'>
-                                            <div id="slider-container" className="slider d-flex">
-                                                <div onClick={prev} className="control-prev-btn">
-                                                    <i className="fas fa-arrow-left"></i>
-                                                </div>
-                                                {hotels
-                                                    .filter(hotels => hotels.category === 'Hotel')
-                                                    .map((hotel, index)=>{
-                                                        return(
-                                                            <div href='accueil' className='slide rounded text-center mx-xl-4 d-flex flex-column justify-content-end text-decoration-none hotelImage' key={index} style={{backgroundImage:`url(${imageHotel.uri}${hotel.featuredImage})`}}>
-                                                                <p className='h5 fw-bold text-white text-center pb-3 mx-auto'>{hotel.name}</p>
-                                                            </div>
-                                                        )
-                                                    })}
-                                                <div onClick={next} className="control-next-btn">
-                                                    <i className="fas fa-arrow-right"></i>
-                                                </div>
+                                {section.title === 'Hotel' &&
+                                    <div className='container'>
+                                        <div id="slider-container" className="slider d-flex">
+                                            <div onClick={prev} className="control-prev-btn">
+                                                <i className="fas fa-arrow-left"></i>
                                             </div>
-                                            <div className="overlay"></div>
+                                            {hotels
+                                                .filter(hotels => hotels.category === 'Hotel')
+                                                .map((hotel, index)=>{
+                                                    return(
+                                                        <div href='accueil' className='slide rounded text-center mx-xl-4 d-flex flex-column justify-content-end text-decoration-none hotelImage' key={index} style={{backgroundImage:`url(${imageHotel.uri}${hotel.featuredImage})`}}>
+                                                            <p className='h5 fw-bold text-white text-center pb-3 mx-auto'>{hotel.name}</p>
+                                                        </div>
+                                                    )
+                                                })}
+                                            <div onClick={next} className="control-next-btn">
+                                                <i className="fas fa-arrow-right"></i>
+                                            </div>
                                         </div>
-                                    }
+                                        <div className="overlay"></div>
+                                    </div>
+                                }
                                 <div className='mx-auto'>
                                     {section.title === 'Programme' && <NavLink className='btn btn-primary m-3' to='/programme'>Programme</NavLink>}
                                     {section.title === 'Nos remerciement' && <NavLink className='btn btn-primary m-3' to='/sponsor'>Sponsor</NavLink>}

@@ -9,7 +9,6 @@ const ArticleComponent = ({id, height, screenSize}) => {
             .get(`https://pixelevent.site/api/articles/${id}`)
             .then(res => setArticle(res.data))
     },[id])
-    console.log(article);
 
     const image = {
         uri : 'https://pixelevent.site/assets/uploads/articles/'

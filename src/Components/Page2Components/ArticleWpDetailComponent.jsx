@@ -8,7 +8,6 @@ const ArticleWpComponent = ({id, height}) => {
             .get(`https://backoffice.pixelevent.site/wp-json/wp/v2/posts/${id}?_embed`)
             .then(res => setArticle(res.data))
     },[id])
-    console.log(article);
 
     return (
         <div className='mt-5' style={{minHeight:height}}>
