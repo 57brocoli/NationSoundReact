@@ -28,8 +28,10 @@ const ArticleComponent = ({id, height, screenSize}) => {
         <div className='mt-5' style={{minHeight:height}}>
             {article &&
                 <div>
-                    <header style={{backgroundImage:`url(${imageDiapo.uri}${article.images[0].name})`}} className='centerImage'>
-                    </header>
+                    {article.images[0] &&
+                        <header style={{backgroundImage:`url(${imageDiapo.uri}${article.images[0].name})`}} className='centerImage'>
+                        </header>
+                    }
                     <article className='container text-white'>
                         <h2 className='fs-1 text-center my-4'>{article.title}</h2>
                         <div className=''>

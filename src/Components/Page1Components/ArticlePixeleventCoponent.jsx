@@ -8,8 +8,16 @@ const ArticlePixeleventCoponent = () => {
     useEffect(()=>{
         axios
             .get('https://pixelevent.site/api/articles')
-            .then(res => setArticles(res.data['hydra:member']));
+            .then(res => {
+                // Créer une copie du tableau d'articles
+                const articlesCopy = [...res.data['hydra:member']];
+                // Inverser l'ordre de la copie
+                const reversedArticles = articlesCopy.reverse();
+                // Mettre à jour le tableau d'état avec le nouveau tableau inversé
+                setArticles(reversedArticles);
+            });
     },[])
+    console.log(articles.reverse()); 
     // On map les articles pour récupéré leurs catégories.
     var allMapCategories = articles.map((article)=>article.categories.name)
 
@@ -19,6 +27,8 @@ const ArticlePixeleventCoponent = () => {
     //variable qui comptient le filtre
     const [filter, setFilter] = useState(null)
 
+    
+    console.log(articles.reverse()); 
     //Fonctions pour filtrées les articles
     const [nombreArticle, setNombreArticle] = useState(3);
     const tousAfficher = () => {
