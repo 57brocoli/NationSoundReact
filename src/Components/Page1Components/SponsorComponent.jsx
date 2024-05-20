@@ -4,7 +4,7 @@ import SponsorPixelEventComponent from '../SubComponent/SponsorPixelEventCompone
 
 const SponsorComponent = ({view, state, height}) => {
 
-    const [channel, setChannel] = useState('data')
+    const [channel, setChannel] = useState('pixelevent')
     const[sponsors, setSponsors]= useState([])
     useEffect(()=>{
         setSponsors(data)
@@ -36,8 +36,11 @@ const SponsorComponent = ({view, state, height}) => {
                 }
                 <h5 className='text-center text-white container py-4'>{view.headerText}</h5>
                 <div className='container mb-3'>
-                    <button className='btn btn-primary' onClick={changeChanel}><i className="fa-solid fa-rotate"></i></button>
+                    <button className='btn btn-primary' onClick={changeChanel}><i className="fa-solid fa-rotate"></i> Change api</button>
                 </div>
+                {channel === 'pixelevent' &&
+                    <SponsorPixelEventComponent/>
+                }
                 {channel === "data" &&
                     <section className='pb-4 container'>
                         {sponsors && 
@@ -51,9 +54,6 @@ const SponsorComponent = ({view, state, height}) => {
                             })
                         }
                     </section>
-                }
-                {channel === 'pixelevent' &&
-                    <SponsorPixelEventComponent/>
                 }
             </main>
         </div>

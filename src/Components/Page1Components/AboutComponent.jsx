@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../Footer';
+import RequesteForm from '../SubComponent/RequesteForm';
 
 const AboutComponent = ({view, state, height}) => {
 
@@ -23,6 +23,9 @@ const AboutComponent = ({view, state, height}) => {
                             return(
                                 <article key={index} className='py-4 text-white'>
                                     <h2 className='text-center h1 fw-bold'>{section.title}</h2>
+                                    {section.title === "Nous contacter" &&
+                                        <RequesteForm/>
+                                    }
                                     <p className='text-center'>{section.content}</p>
                                     <div className='d-flex flex-wrap justify-content-center'>
                                     {section.images && 

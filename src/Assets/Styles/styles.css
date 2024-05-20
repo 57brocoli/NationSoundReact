@@ -2,6 +2,15 @@
 	font-family: 'raph';
 	src: url('../Styles/font/RaphLanokFuture.ttf') format("truetype"),
 }
+:root {
+    --orange: #f1793c;
+    --vert: #5dd29b;
+    --jaune: #f1e469;
+    --mauveClaire: #6c24dd;
+    --mauveFonce: #1c043c;
+    --rouge: #FF0000;
+    --blue: #0000FF;
+  }
 
 .fontRaph{
     font-family: 'raph';
@@ -234,4 +243,78 @@
 }
 .imgA{
     height: 200px;
+}
+
+
+/* Style pour le formulaire de contact */
+.containerRequestForm{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-form {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+.contact-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+  }
+  
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+.contact-form input[type="submit"] {
+    background: var(--vert);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  
+.contact-form input[type="submit"]:hover {
+    background: #4cae4c;
+}
+.textModal h5{
+    color: var(--vert);
+}
+.textModal p{
+    color: var(--mauveClaire);
+}
+.textModal button{
+    background: var(--vert);
+    color: white;
+}
+.textModal button{
+    background: var(--vert);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+.textModal button:hover{
+    background: #4cae4c;
 }
