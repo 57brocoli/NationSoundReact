@@ -10,7 +10,7 @@ const ArticleCards = ({article, channel}) => {
     return (
         <>
             {channel === 'pixelevent' ?
-                (<NavLink className='d-flex container text-decoration-none text-white' to={`/article/${article.id}`}>
+                (<NavLink className='my-2 d-flex text-decoration-none text-white cardArticle' to={`/article/${article.id}`}>
                     <div style={{backgroundImage:`url(${imageArticle.uri}${article.featuredImage})`}} className='imgArticle centerImage rounded col-3'>
                     </div>
                     <div>
@@ -21,7 +21,7 @@ const ArticleCards = ({article, channel}) => {
                 </NavLink>):''
             }
             {channel === 'backoffice' ?
-                (<NavLink className='d-flex container text-decoration-none text-white' to={`/article/wp/${article.id}`}>
+                (<NavLink className='d-flex text-decoration-none text-white cardArticle' to={`/article/wp/${article.id}`}>
                     {article._embedded &&
                         article._embedded['wp:featuredmedia'] ?
                         (<div style={{backgroundImage:`url(${article._embedded['wp:featuredmedia'][0].source_url})`}} className='imgArticle centerImage rounded col-3'>

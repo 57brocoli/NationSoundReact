@@ -5,7 +5,7 @@ import ArticlePixeleventCoponent from './ArticlePixeleventCoponent';
 
 const ActualiteComponent = ({view, state, height}) => {
 
-    const [channel, setChannel] = useState('backoffice')
+    const [channel, setChannel] = useState('pixelevent')
 
     const changeChannel = () => {
         if (channel === 'pixelevent') {

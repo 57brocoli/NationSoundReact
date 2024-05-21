@@ -194,17 +194,72 @@
     height: 200px;
 }
 /* style pour la page actualité */
+.cardArticle{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.cardArticle:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
 .imgArticle{
     height: 200px;
 }
 .titleArticle{
-    height: 50px;
+    /* height: 80px; */
+    /* overflow: hidden; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
     overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em; /* Ajustez la hauteur de ligne si nécessaire */
+    max-height: calc(3 * 1.5em); 
 }
 .contentArticle{
     overflow:hidden;
     height: 50px;
 }
+/* Style pour les commentaire */
+.commentsSection {
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.commentsSectionTitre{
+    color: var(--orange);
+    margin-bottom: 20px;
+}
+.contenaireCommentaire {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.commentaireAutor {
+    font-weight: bold;
+    color: var(--blue);
+    margin-bottom: 5px;
+}
+
+.commentaireContent {
+    color: var(--mauveClaire);
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .commentsSection {
+        padding: 10px;
+    }
+
+    .contenaireCommentaire {
+        padding: 10px;
+    }
+}
+
 /* style pour la page sponsors */
 .sponsorName{
     font-size: 3.5em;

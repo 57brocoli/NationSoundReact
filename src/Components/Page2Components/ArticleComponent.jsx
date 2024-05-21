@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import RequesteForm from '../SubComponent/RequesteForm';
+import CommentForm from '../SubComponent/CommentForm';
 
 const ArticleComponent = ({id, height, screenSize}) => {
 
@@ -23,7 +25,7 @@ const ArticleComponent = ({id, height, screenSize}) => {
     function next(){
         document.getElementById('slider-container').scrollLeft += 270;
     }
-    
+    // console.log(article.comments);
     return (
         <div className='mt-5' style={{minHeight:height}}>
             {article &&
@@ -63,6 +65,23 @@ const ArticleComponent = ({id, height, screenSize}) => {
                             <div className="overlay"></div>
                         </section>
                     </article>
+                    {/* Section pour les commentaires */}
+                    <section className="commentsSection container">
+                        <h3 className='commentsSectionTitre'>Commentaire{article.comments.length > 1 && "s"} :</h3>
+                        {article.comments.map((comment) => (
+                            <div key={comment.id} className="contenaireCommentaire">
+                            {comment.author &&
+                            <p className="commentaireAutor">{comment.author.firstname} {comment.author.lastname}</p>
+                            }
+                            {comment.authorMobile &&
+                            <p className="commentaireAutor">{comment.authorMobile}</p>
+                            }
+                            <p className="commentaireContent">{comment.content}</p>
+                            </div>
+                        ))}
+                        <h4 className='commentsSectionTitre'>Rediger un commentaire ?</h4>
+                        <CommentForm id={article.id} article={article} setArticle={setArticle}/>
+                    </section>
                 </div>
             }
         </div>
