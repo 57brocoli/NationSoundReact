@@ -87,15 +87,43 @@
 }
 
 /* style pour la page de connexion */
-/* .HeaderContainerLogin{
+.formRegLog{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.logoLogin{
-    height: 200px;
+    max-width: 1000px;
+    margin: 5% auto;
+    padding: 20px;
     border-radius: 10px;
-} */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.formRegLog input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.formRegLog input:focus {
+    border-color: var(--jaune);
+    outline: none;
+    box-shadow: 0 0 5px var(--jaune);
+}
+.formRegLog button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--vert);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.formRegLog button:hover {
+    background-color: #4cae4c;
+}
 
 /* style pour le carousel devenement */
 .hotelImage{

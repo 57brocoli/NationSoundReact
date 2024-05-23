@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import logo from '/logo.jpg'
+import userIcon from './../../public/images/user/userIcon.png'
 
 const Navigation = () => {
     
@@ -39,6 +40,17 @@ const Navigation = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to='/map'>map</NavLink>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav ">
+                        <li class="btn-group dropstart">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <img src={userIcon} alt="Logo" width="30" height="30" className="d-inline-block align-text-top ms-2"></img>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/register">Inscription</a></li>
+                                <li><a class="dropdown-item" href="/login">Connexion</a></li>
+                            </ul>
                         </li>
                     </ul>
                     </div>

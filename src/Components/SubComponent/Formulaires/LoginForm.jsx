@@ -5,16 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 
 function LoginForm() {
-    // const [formData, setFormData] = useState({ email: '', password: '' });
     const navigate = useNavigate();
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({
-    //         ...formData,
-    //         [name]: value
-    //     });
-    // };
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -30,18 +21,16 @@ function LoginForm() {
             const token = response.data.token;
             localStorage.setItem('token', token);
             console.log(token);
-            if (token) {
-                const user = jwtDecode(token);
-                console.log(user);
-            }
+            const user = jwtDecode(token);
+            console.log(user);
             navigate('/');
         } catch (error) {
             console.error('There was an error logging in!', error.response ? error.response.data : error.message);
         }
     };
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="email" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <form onSubmit={handleSubmit} className='formRegLog'>
+            <input type="text" name="email" placeholder="Pseudo" value={username} onChange={(e) => setUsername(e.target.value)} required />
             <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <button type="submit">Login</button>
         </form>
