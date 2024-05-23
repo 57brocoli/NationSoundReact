@@ -4,6 +4,8 @@ import Home from "./Pages/Home";
 import PageError from "./Pages/PageError";
 import Page1 from "./Pages/Page1";
 import Page2 from "./Pages/Page2";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,16 @@ const router = createBrowserRouter([
       axios
         .get('https://pixelevent.site/api/views/1')
         .then(res => res.data),
+  },
+  {
+    path: '/login',
+    element: <Login/>,
+    errorElement: <PageError/>,
+  },
+  {
+    path: '/register',
+    element: <Register/>,
+    errorElement: <PageError/>,
   },
   {
     path: '/billetterie',

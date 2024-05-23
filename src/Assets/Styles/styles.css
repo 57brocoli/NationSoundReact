@@ -79,11 +79,23 @@
     width: 100%;
 }
 .backgroundColor{
-    background: linear-gradient(#f1793c, #6c24dd, #5dd29b  );
+    background: linear-gradient(#f1793c, #6c24dd, #5dd29b);
+    min-height: 100vh;
 }
 .btnRetour{
     position: absolute;
 }
+
+/* style pour la page de connexion */
+/* .HeaderContainerLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logoLogin{
+    height: 200px;
+    border-radius: 10px;
+} */
 
 /* style pour le carousel devenement */
 .hotelImage{

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import RequesteForm from '../SubComponent/RequesteForm';
-import CommentForm from '../SubComponent/CommentForm';
+import CommentForm from '../SubComponent/Formulaires/CommentForm';
 
 const ArticleComponent = ({id, height, screenSize}) => {
 
