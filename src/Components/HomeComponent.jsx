@@ -91,7 +91,7 @@ const HomeComponent = ({view}) => {
                                         </div>
                                     </div>
                                 }
-                                {section.title === 'Hotel' &&
+                                {section.title === 'Hôtel' &&
                                     <div className='container'>
                                         <div id="slider-container" className="slider d-flex">
                                             <div onClick={prev} className="control-prev-btn">
@@ -115,7 +115,7 @@ const HomeComponent = ({view}) => {
                                 }
                                 <div className='mx-auto'>
                                     {section.title === 'Programme' && <NavLink className='btn btn-primary m-3' to='/programme'>Programme</NavLink>}
-                                    {section.title === 'Nos remerciement' && <NavLink className='btn btn-primary m-3' to='/sponsor'>Sponsor</NavLink>}
+                                    {section.title === 'Nos remerciements' && <NavLink className='btn btn-primary m-3' to='/sponsor'>Sponsor</NavLink>}
                                 </div>
                             </article>
                         )
