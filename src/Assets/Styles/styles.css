@@ -88,14 +88,14 @@
 
 /* style pour la page de connexion */
 .formRegLog{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     max-width: 1000px;
     margin: 5% auto;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.formRegLog label {
+    color: white;
 }
 .formRegLog input {
     width: 100%;
@@ -123,6 +123,14 @@
 }
 .formRegLog button:hover {
     background-color: #4cae4c;
+}
+.formRegLog span {
+    color: var(--orange);
+    font-weight: bold;
+    margin-left: 10px;
+}
+.formRegLog p {
+    color: white;
 }
 
 /* style pour le carousel devenement */
