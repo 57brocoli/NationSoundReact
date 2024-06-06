@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterForm from '../Components/SubComponent/Formulaires/RegisterForm'
+import RegisterForm from './../Components/Formulaires/RegisterForm'
 import Navigation from '../Components/Navigation'
 
 function Register() {

@@ -9,7 +9,7 @@ import instagram_logo from '/images/footer/instagram_logo.png';
 
 const Footer = () => {
     return (
-        <>
+        <footer>
             <section id='footer'>
             <div className='container d-flex align-items-baseline px-2 pt-3'>
                 <img src={logo} id='logoFooter' className='rounded' alt="img"/>
@@ -27,7 +27,7 @@ const Footer = () => {
             <div>
                 <h5 className='text-center my-2 pt-2' id='downFooter' >&copy; - Nation Sounds - 2022</h5>
             </div>
-        </>
+        </footer>
     );
 };
 

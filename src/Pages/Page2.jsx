@@ -1,43 +1,29 @@
 import Navigation from '../Components/Navigation';
 import {useParams} from 'react-router-dom'
-import ArticleComponent from '../Components/Page2Components/ArticleComponent';
 import Footer from '../Components/Footer';
-import EpisodeComponent from '../Components/Page2Components/EpisodeComponent';
-import LieuComponent from '../Components/Page2Components/LieuComponent';
-import ArticleWpDetailComponent from '../Components/Page2Components/ArticleWpDetailComponent';
-import ArtisteDetails from '../Components/Page2Components/ArtisteDetails';
-import { useEffect, useState } from 'react';
+import EpisodeComponent from '../Components/Page2Components/Episodes/EpisodeComponent';
+import LieuComponent from '../Components/Page2Components/Lieu/LieuComponent';
+import ArtisteDetails from '../Components/Page2Components/Artiste/ArtisteDetails';
+import { useDimention } from '../Assets/Variables/Variable';
+import ArticleComponent from '../Components/Page2Components/Article/ArticleComponent';
 
-const Page2 = ({artiste, article, articlewp, episode, lieu}) => {
+const Page2 = ({artiste, article, episode, lieu}) => {
     
     let { id } = useParams();
 
-	const [screenSize, setScreenSize] = useState(getCurrentDimension());
-    function getCurrentDimension(){
-      return {
-            width: window.innerWidth,
-            height: window.innerHeight
-      }
-    }
-    useEffect(() => {
-          const updateDimension = () => {
-                setScreenSize(getCurrentDimension())
-          }
-          window.addEventListener('resize', updateDimension);
-          return(() => {
-              window.removeEventListener('resize', updateDimension);
-          })
-    }, [screenSize])
-    const height = screenSize.height-57-175-70
-
+    const h = useDimention()
+    const height = h.height-45-8-8-240
+    
+console.log();
     return (
-        <div className='doc backgroundColor'>
-            <Navigation/>
-            {artiste && <ArtisteDetails id={id} height={height}/>}
-            {article && <ArticleComponent id={id} height={height} screenSize={screenSize}/>}
-            {articlewp && <ArticleWpDetailComponent id={id} height={height}/>}
-            {episode && <EpisodeComponent id={id} height={height}/>}
-            {lieu && <LieuComponent id={id} height={height}/>}
+        <div className='doc backgroundColor' >
+            <div style={{minHeight:height}}>
+                <Navigation/>
+                {artiste && <ArtisteDetails id={id}/>}
+                {article && <ArticleComponent id={id}/>}
+                {episode && <EpisodeComponent id={id}/>}
+                {lieu && <LieuComponent id={id}/>}
+            </div>
             <Footer/>
         </div>
     );

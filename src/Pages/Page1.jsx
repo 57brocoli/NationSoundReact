@@ -1,51 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import Navigation from '../Components/Navigation';
-import BilletterieComponent from '../Components/Page1Components/BilletterieComponent';
-import AboutComponent from '../Components/Page1Components/AboutComponent';
+import BilletterieComponent from '../Components/Page1Components/Billets/BilletterieComponent';
+import AboutComponent from '../Components/Page1Components/Apropos/AboutComponent';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Footer from '../Components/Footer';
-import ProgrammeConponent from '../Components/Page1Components/ProgrammeConponent';
-import ActualiteComponent from '../Components/Page1Components/ActualiteComponent';
-import SponsorComponent from '../Components/Page1Components/SponsorComponent';
-import MapComponent from '../Components/Page1Components/MapComponent';
-import ArtisteComponent from '../Components/Page1Components/ArtisteComponent';
+import ProgrammeConponent from '../Components/Page1Components/Programme/ProgrammeConponent';
+import SponsorComponent from '../Components/Page1Components/Sponsors/SponsorComponent';
+import MapComponent from '../Components/Page1Components/Carte/MapComponent';
+import ArtisteComponent from '../Components/Page1Components/Artistes/ArtisteComponent';
+import ActualiteComponent from '../Components/Page1Components/Actualites/ActualiteComponent';
+import { useDimention } from '../Assets/Variables/Variable';
 
 const Page1 = ({billetterie, about, programme, artiste, actualite, sponsor, map}) => {
 
+    //On récuprer les données provenant de la route
     const view = useLoaderData()
 
     //on recupère la propriété state du fetch
 	const {state} = useNavigation()
 
     // fonction pour avoir les dimention de l"ecran
-	const [screenSize, setScreenSize] = useState(getCurrentDimension());
-    function getCurrentDimension(){
-      return {
-            width: window.innerWidth,
-            height: window.innerHeight
-      }
-    }
-    useEffect(() => {
-          const updateDimension = () => {
-                setScreenSize(getCurrentDimension())
-          }
-          window.addEventListener('resize', updateDimension);
-          return(() => {
-              window.removeEventListener('resize', updateDimension);
-          })
-    }, [screenSize])
-    const height = screenSize.height-57-175-59
+    const h = useDimention()
+    const height = h.height-45-8-8-190    
 
     return (
         <div className='backgroundColor'>
-            <Navigation/>
-            {billetterie && <BilletterieComponent view={view} height={height}/>}
-            {about && <AboutComponent view={view} height={height}/>}
-            {programme && <ProgrammeConponent view={view} state={state} height={height}/>}
-            {artiste && <ArtisteComponent state={state} height={height}/>}
-            {sponsor && <SponsorComponent view={view} state={state} height={height}/>}
-            {actualite && <ActualiteComponent view={view} state={state} height={height}/>}
-            {map && <MapComponent screenSize={screenSize}/>}
+            <div style={{minHeight:height}}>
+                <Navigation/>
+                {billetterie && <BilletterieComponent view={view}/>}
+                {about && <AboutComponent view={view}/>}
+                {programme && <ProgrammeConponent view={view} state={state}/>}
+                {artiste && <ArtisteComponent state={state}/>}
+                {sponsor && <SponsorComponent view={view} state={state}/>}
+                {actualite && <ActualiteComponent view={view} state={state}/>}
+                {map && <MapComponent screenSize={h}/>}
+            </div>
             <Footer/>
         </div>
     );

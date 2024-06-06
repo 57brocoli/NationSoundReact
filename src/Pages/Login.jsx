@@ -1,7 +1,6 @@
 import React from 'react'
-import logo from './../../public/logo.jpg'
 import Navigation from '../Components/Navigation'
-import LoginForm from '../Components/SubComponent/Formulaires/LoginForm'
+import LoginForm from './../Components/Formulaires/LoginForm'
 
 function Login() {
     return (

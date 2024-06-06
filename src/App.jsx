@@ -6,8 +6,16 @@ import Page1 from "./Pages/Page1";
 import Page2 from "./Pages/Page2";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Test from "./Pages/Test";
+import {Provider} from 'react-redux';
+import store from './../redux/strore';
 
 const router = createBrowserRouter([
+  {
+    path: '/test',
+    element: <Test/>,
+    errorElement: <PageError/>,
+  },
   {
     path: '/',
     element: <Home/>,
@@ -114,9 +122,11 @@ const router = createBrowserRouter([
   
 ])
 function App() {
-  return (
-    <RouterProvider router={router}/>
-  )
+    return (
+        <Provider store={store}>
+        <RouterProvider router={router}/>
+        </Provider>
+    )
 }
 
 export default App

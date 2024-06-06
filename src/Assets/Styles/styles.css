@@ -31,6 +31,7 @@
     border: .17em solid hsl(250 45% 50% /1);
     border-radius: 100vh;
 }
+
 .centerimg{
     background-position: top;
     background-size: cover;
@@ -41,6 +42,7 @@
     font-size: 6em;
     color: #f1e469;
     padding-top: 150px;
+    text-transform: capitalize
 }
 @media only screen and (max-width: 530px) {
     .titlePage{
@@ -80,7 +82,7 @@
 }
 .backgroundColor{
     background: linear-gradient(#f1793c, #6c24dd, #5dd29b);
-    min-height: 100vh;
+    /* background: radial-gradient(circle at 0% 12%, #f1e469 5%, #6c24dd 25.5%, #5dd29b 62.3%, rgb(215, 248, 247) 93.8%); */
 }
 .btnRetour{
     position: absolute;
@@ -171,7 +173,7 @@
     transition: 0.5s;
 }
 .slide:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 .slide p {
     width: 250px;
@@ -241,6 +243,31 @@
 .imgBillet{
     height: 200px;
 }
+
+/* Style pour le programme */
+.btnFiltre{
+    width: fit-content;
+}
+
+.cardProgramme{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.cardProgramme:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.journe1 {
+    background-color:  #fe9a8b;
+    
+}
+.journe2 {
+    background-color:  #8fd3f4;
+}
+.journe3 {
+    background-color:  #d57eeb;
+}
+
 /* style pour la page actualité */
 .cardArticle{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -316,6 +343,16 @@
 @media only screen and (max-width: 480px) {
     .sponsorName{
         font-size: 2.5em;
+    }
+}
+.imgSponsor{
+    height: 200px;
+    width: 200px;
+}
+@media only screen and (max-width: 480px) {
+    .imgSponsor{
+        height: 130px;
+        width: 130px;
     }
 }
 /* style pour la page d'artiste */
