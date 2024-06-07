@@ -33,7 +33,7 @@ function RegisterForm() {
             <input type="text" name="username" placeholder="turlututu" value={username} onChange={(e) => setUsername(e.target.value)} required />
             <label htmlFor="password">Mot de passe</label>
             <input type="password" name="password" placeholder="mot_de_passe_de_la_mort" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <button type="submit">Register</button>
+            <button type="submit" className='mt-3'>Envoyer</button>
         </form>
     );
 }

@@ -13,6 +13,8 @@ const HomeComponent = ({view}) => {
     //fonction pour recupéré les hotels
     const dispatch = useDispatch()
     const lieux = useSelector(state => state.lieux.lieux)
+    const user = useSelector(state => state.user.user); // Accéder à l'état de l'utilisateur
+    const token = useSelector(state => state.user.token); // Accéder au token de l'utilisateur
     if (lieux) {
         var hotels = lieux.filter(lieux => lieux.category === 'Hotel')
     }
@@ -20,6 +22,7 @@ const HomeComponent = ({view}) => {
         dispatch(fetchLieux());
     },[dispatch])
 
+    console.log(user, token);
     return (
         <div>
             {view.headerImage &&

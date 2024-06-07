@@ -7,9 +7,11 @@ import ArtistesReducers from "./reducers/ArtistesReducers";
 import FaqsReducers from "./reducers/FaqReducers"
 import SponsorsReducers from "./reducers/SponsorsReducers";
 import EpisodesReducers from "./reducers/EpisodesReducers";
+import UserReducers from "./reducers/UserReducers";
 
 const store = configureStore({
     reducer : {
+        user: UserReducers,
         billets : billetsReducer,
         lieux: LieuxReducers,
         programme: ProgrammeReducers,
@@ -18,7 +20,8 @@ const store = configureStore({
         faqs : FaqsReducers,
         sponsors : SponsorsReducers,
         episodes : EpisodesReducers,
-    }
+    },
+    devTools : true,
 })
 
 export default store;

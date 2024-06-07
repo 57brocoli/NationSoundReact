@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import Modal from '../SubComponent/Modal';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../redux/reducers/UserReducers';
 
 function LoginForm() {
     //Propriété pour naviger
@@ -23,6 +25,8 @@ function LoginForm() {
         body : ''
     })
 
+    const dispatch = useDispatch();
+
     //Fonction pour fermer la modal
     const handleCloseModal = () => {
         setModal({
@@ -35,7 +39,7 @@ function LoginForm() {
           setModal({
             show: true,
             title: 'Inscription réussie',
-            body: 'Votre inscription est terminer. Veuillez vous connecter.'
+            body: 'Votre inscription est terminer. Veuillez pouvez vous connecter.'
           });
         }
       }, [fromInsciption]);
@@ -50,9 +54,8 @@ function LoginForm() {
             });
             const token = response.data.token;
             localStorage.setItem('token', token);
-            console.log(token);
             const user = jwtDecode(token);
-            console.log(user);
+            dispatch(setUser({ user, token }));
             navigate('/');
         } catch (error) {
             console.error('There was an error logging in!', error.response ? error.response.data : error.message);
