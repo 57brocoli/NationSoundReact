@@ -1,49 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-// import axios from '../Axios/axiosConfig';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import Modal from '../SubComponent/Modal';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../../redux/reducers/UserReducers';
+import { setUser } from '../../../redux/actions/UserAction';
+import { useModal } from '../../Assets/Variables/Variable';
+// import { setUser } from '../../../redux/reducers/UserReducers';
 
-function LoginForm() {
+function LoginForm({redirection, handleClose, psedoAuth}) {
+    //Importation de dispatch
+    const dispatch = useDispatch();
+
     //Propriété pour naviger
     const navigate = useNavigate();
+
+    //Fonction pour les modals
+    const {modal, handleCloseModal, conectFailed, fromInsciptionPage} = useModal()
 
     //recupere les state provenant de register
     const location = useLocation();
     const { fromInsciption, psedo } = location.state || {};
 
-    const [username, setInputUsername] = useState(psedo || '')
+    //lorsque l'utilisateur vient de la page inscription
+    const [execModal, setExecModal] = useState(true)
+    useEffect(() => {
+        if (fromInsciption && execModal) {
+            fromInsciptionPage()
+            setExecModal(false)
+        }
+    }, [fromInsciption,fromInsciptionPage, execModal]);
+
+    // Dans le cas ou l'utilisateur est sur la page actualité : Si psedoAuth change, mettre à jour username
+    useEffect(() => {
+        if (psedoAuth) {
+            setUsername(psedoAuth);
+        }
+    }, [psedoAuth]);
+
+    //Variable du formulaire
+    const [username, setUsername] = useState(psedo || '')
     const [password, setPassword] = useState('')
 
-    //Initialisation des données pour la modal
-    const [modal, setModal] = useState({
-        show : false,
-        title : '',
-        body : ''
-    })
-
-    const dispatch = useDispatch();
-
-    //Fonction pour fermer la modal
-    const handleCloseModal = () => {
-        setModal({
-          ...modal,
-          show: false
-        });
-    };
-    useEffect(() => {
-        if (fromInsciption) {
-          setModal({
-            show: true,
-            title: 'Inscription réussie',
-            body: 'Votre inscription est terminer. Veuillez pouvez vous connecter.'
-          });
-        }
-      }, [fromInsciption]);
-
+    //Fonction de connection
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -53,21 +52,29 @@ function LoginForm() {
                 }
             });
             const token = response.data.token;
-            localStorage.setItem('token', token);
+            // localStorage.setItem('token', token);
             const user = jwtDecode(token);
-            dispatch(setUser({ user, token }));
-            navigate('/');
+            dispatch(setUser(user));
+            //Si l'utilisateur vient de la page Inscrition : redirige vers la page accueil
+            if (redirection) {
+                navigate('/');
+            //Si l'utilisateur est sur la page actualité : ferme la modal d'inscription
+            } else {
+                handleClose();
+            }
+            ;
         } catch (error) {
-            console.error('There was an error logging in!', error.response ? error.response.data : error.message);
+            conectFailed()
         }
     };
+
     return (
         <form onSubmit={handleSubmit} className='formRegLog'>
             <label htmlFor="username">Pseudo</label>
-            <input type="text" name="username" placeholder="Pseudo" value={username} onChange={(e) => setInputUsername(e.target.value)} required />
+            <input type="text" name="username" placeholder="Pseudo" value={username} onChange={(e) => setUsername(e.target.value)} required />
             <label htmlFor="password">Mot de passe</label>
             <input type="password" name="password" placeholder="si non tu peut pas" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <button type="submit">Login</button>
+            <button type="submit">Connexion</button>
             <Modal show={modal.show} handleClose={handleCloseModal} title={modal.title} body={modal.body}/>
         </form>
     )

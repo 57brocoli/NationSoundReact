@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Modal({show, title, body, handleClose}) {
+
     return (
         <div className={`modal ${show ? 'd-block' : 'd-none'} textModal`} tabIndex="-1">
             <div className="modal-dialog modal-dialog-centered">
@@ -16,7 +17,7 @@ function Modal({show, title, body, handleClose}) {
                     type="button"
                     onClick={handleClose}
                     >
-                    Close
+                    Fermer
                     </button>
                 </div>
                 </div>

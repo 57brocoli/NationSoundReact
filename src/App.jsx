@@ -8,7 +8,8 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Test from "./Pages/Test";
 import {Provider} from 'react-redux';
-import store from './../redux/strore';
+import store, { persistor } from './../redux/strore';
+import { PersistGate } from "redux-persist/integration/react";
 
 const router = createBrowserRouter([
   {
@@ -124,7 +125,9 @@ const router = createBrowserRouter([
 function App() {
     return (
         <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
           <RouterProvider router={router}/>
+          </PersistGate>
         </Provider>
     )
 }

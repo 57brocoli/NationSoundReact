@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import Modal from '../SubComponent/Modal';
 import axios from 'axios';
 
-function CommentForm({id, setArticle}) {
+function CommentForm({id, setArticle, user}) {
 
     //Initialisation du tableau des données du formulaire
     const [formData, setFormData] = useState({
-        lastname: '',
-        firstname: '',
+        username: user.username,
         content: '',
     });
     // Initialisation d'une nouvelle date
@@ -53,7 +52,7 @@ function CommentForm({id, setArticle}) {
             },
             body: JSON.stringify({
                 content: formData.content,
-                authorMobile: `${formData.lastname} ${formData.firstname}`,
+                authorMobile: formData.username,
                 relatedArticle: '/api/articles/' + id,
                 created_at: date,
             }),
@@ -68,8 +67,7 @@ function CommentForm({id, setArticle}) {
             });
         // Réinitialisation des valeurs du formulaire
         setFormData({
-            lastname: '',
-            firstname: '',
+            username: '',
             content: '',
         });       
         // Si une erreur est arriver
@@ -87,12 +85,8 @@ function CommentForm({id, setArticle}) {
         <div className="containerRequestForm">
             <form onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group mt-2">
-                    <label htmlFor="lastname">Nom :</label>
-                    <input type="text" id="lastname" name="lastname" value={formData.lastname} onChange={handleChange} required />
-                </div>
-                <div className="form-group mt-2">
-                    <label htmlFor="firstname">Prénom :</label>
-                    <input type="text" id="firstname" name="firstname" value={formData.firstname} onChange={handleChange} required />
+                    <label htmlFor="firstname">Psedo :</label>
+                    <input readOnly type="text" id="firstname" name="firstname" value={user.username} required />
                 </div>
                 <div className="form-group mt-2">
                     <label htmlFor="content">Commentaire :</label>

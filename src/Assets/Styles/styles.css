@@ -10,6 +10,8 @@
     --mauveFonce: #1c043c;
     --rouge: #FF0000;
     --blue: #0000FF;
+    --gray_light: #D3D3D3;
+    --gray: #808080;
   }
 
 .fontRaph{
@@ -441,10 +443,7 @@
 .textModal p{
     color: var(--mauveClaire);
 }
-.textModal button{
-    background: var(--vert);
-    color: white;
-}
+
 .textModal button{
     background: var(--vert);
     color: white;
@@ -457,4 +456,20 @@
 }
 .textModal button:hover{
     background: #4cae4c;
+}
+
+/* Style pour les modal */
+.modalConnect h5 {
+    color: var(--orange);
+}
+.modalConnect label {
+    color: var(--mauveFonce);
+    font-weight: bold;
+}
+.textModal .btnClose {
+    background-color: var(--gray_light);
+}
+.textModal .btnClose:hover {
+    background-color: var(--gray);
+    color: var(--gray_light);
 }

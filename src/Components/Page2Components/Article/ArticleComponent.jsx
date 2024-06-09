@@ -3,12 +3,14 @@ import CommentForm from '../../Formulaires/CommentForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { imageArticle, imageArticleDiapo } from '../../../Assets/Variables/Variable';
 import { fetchArticles } from '../../../../redux/reducers/ArticlesReducers';
+import ConnectOrAuthModal from '../../SubComponent/ConnectOrAuthModal';
 
 const ArticleComponent = ({id}) => {
 
     //On récupere les articles du redux
     const dispatch = useDispatch()
     const articles = useSelector(state => state.articles.articles)
+    const user = useSelector(state => state.user.user)
     useEffect(()=>{
         dispatch(fetchArticles())
     },[dispatch])
@@ -29,6 +31,28 @@ const ArticleComponent = ({id}) => {
         document.getElementById('slider-container').scrollLeft += 270;
     }
 
+    //Pour ouvrir la modal de connexion
+    const openConnecModal = () => {
+        setModal({
+            ...modal,
+            show: true
+        });
+    }
+
+    //Initialisation des données pour la modal
+    const [modal, setModal] = useState({
+        show : false,
+        title : '',
+        body : ''
+    })
+
+    //Fonction pour fermer la modal
+    const handleCloseModal = () => {
+        setModal({
+          ...modal,
+          show: false
+        });
+    };
     return (
         <div className='mt-5'>
             {article &&
@@ -87,9 +111,16 @@ const ArticleComponent = ({id}) => {
                             </div>
                         }
                         <h4 className='commentsSectionTitre'>{article.comments.length < 1 ? "Soyez le premier à laisser un commentaire :" : "Rediger un commentaire :"}</h4>
-                        <CommentForm id={article.id} article={article} setArticle={setArticle}/>
+                        {user ?
+                        <CommentForm id={article.id} article={article} setArticle={setArticle} user={user}/>
+                        :
+                        <button className='btn btn-primary' onClick={openConnecModal}>Connectez vous pour commenter</button>
+                        }
                     </section>
                 </div>
+            }
+            {openConnecModal &&
+                <ConnectOrAuthModal show={modal.show} handleClose={handleCloseModal}/>
             }
         </div>
     );

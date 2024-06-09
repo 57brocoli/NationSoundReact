@@ -22,7 +22,6 @@ const HomeComponent = ({view}) => {
         dispatch(fetchLieux());
     },[dispatch])
 
-    console.log(user, token);
     return (
         <div>
             {view.headerImage &&

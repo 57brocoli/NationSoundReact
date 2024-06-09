@@ -16,7 +16,7 @@ function Login() {
                     <h1 className='text-center titlePage'>Login</h1>
                 </header>
                 {/* <hr /> */}
-                <LoginForm/>
+                <LoginForm redirection={true}/>
             </div>
             <Footer/>
         </div>

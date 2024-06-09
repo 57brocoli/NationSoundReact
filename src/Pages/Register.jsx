@@ -18,7 +18,7 @@ function Register() {
                 <h1 className='text-center titlePage'>Inscription</h1>
             </header>
             {/* <hr /> */}
-            <RegisterForm/>
+            <RegisterForm redirection={true}/>
             </div>
             <Footer/>
             

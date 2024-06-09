@@ -1,9 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import logo from '/logo.jpg'
 import userIcon from './../../public/images/user/userIcon.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { logout_user } from '../../redux/actions/UserAction';
+// import { clearUser } from '../../redux/reducers/UserReducers';
 
 const Navigation = () => {
-    
+    const user = useSelector(state => state.user.user); // Accéder à l'état de l'utilisateur
+    const dispatch = useDispatch()
+
+    //Fonction pour se déconnecter
+    const deconexion = () => {
+        // dispatch(clearUser()); // Appelle l'action logout pour effacer les informations utilisateur et le token
+        dispatch(logout_user())
+      };
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
@@ -43,15 +54,27 @@ const Navigation = () => {
                         </li>
                     </ul>
                     <ul className="navbar-nav ">
-                        <li className="btn-group dropstart">
+                        <li className="btn-group dropstart ">
                             <button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                            <img src={userIcon} alt="Logo" width="30" height="30" className="d-inline-block align-text-top ms-2"></img>
+                            <img src={userIcon} alt="Logo" width="30" height="30" className="d-inline-block align-text-center ms-2"></img>
                             </button>
+                            {user == null ?
                             <ul className="dropdown-menu">
                                 <li><NavLink className="dropdown-item" to="/register">Inscription</NavLink></li>
                                 <li><NavLink className="dropdown-item" to="/login">Connexion</NavLink></li>
                             </ul>
+                            :
+                            <ul className="dropdown-menu">
+                                <li><button className="dropdown-item" onClick={deconexion}>Déconnexion</button></li>
+                            </ul>
+                            }
+                            
                         </li>
+                        {user != null &&
+                            <li className="nav-item d-flex align-items-center">
+                                    <p className='mb-0 mx-3'>{user.username}</p>
+                            </li>
+                        }
                     </ul>
                     </div>
                 </div>
