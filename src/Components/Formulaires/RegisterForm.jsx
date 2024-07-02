@@ -16,7 +16,8 @@ function RegisterForm({redirection, setOnlyConnect, setPsedo}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/webuser/register', {email,username, password}, {
+            // await axios.post('http://localhost:8000/webuser/register', {email,username, password}, {
+            await axios.post('https://pixelfull.pixelevent.site/webuser/register', {email,username, password}, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

@@ -52,6 +52,9 @@ const Navigation = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to='/map'>map</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to='/hero'>Hero</NavLink>
+                        </li>
                     </ul>
                     <ul className="navbar-nav ">
                         <li className="btn-group dropstart ">

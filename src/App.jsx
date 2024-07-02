@@ -10,6 +10,7 @@ import Test from "./Pages/Test";
 import {Provider} from 'react-redux';
 import store, { persistor } from './../redux/strore';
 import { PersistGate } from "redux-persist/integration/react";
+import Hero from "./Pages/Hero/Hero";
 
 const router = createBrowserRouter([
   {
@@ -118,6 +119,11 @@ const router = createBrowserRouter([
   {
     path: '/lieu/:id',
     element: <Page2 lieu={true}/>,
+    errorElement: <PageError/>,
+  },
+  {
+    path: '/hero',
+    element: <Hero/>,
     errorElement: <PageError/>,
   },
   
