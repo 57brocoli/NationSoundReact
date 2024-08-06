@@ -21,10 +21,16 @@ function ModalImage({show, handleCloseModal, image}) {
                         exit={{ opacity: 0, scale: 0.7 }}
                         transition={{ ease: "easeOut", duration: 0.2 }}
                         style={{ backgroundImage: `url(${figure.uri}${image.name})`}}
-                        className='imageShow'
+                        className='modalImageContainer'
                     >
-                        <p onClick={handleCloseModal} className='closeImage'>&times;</p>
+                        <img
+                            src={`${figure.uri}${image.name}`}
+                            alt="Modal Content"
+                            className='imageShow'
+                        />
+                        {/* <p onClick={handleCloseModal} className='closeImage'>&times;</p> */}
                     </motion.div>
+                    
                 </div>
             )}
         </AnimatePresence>

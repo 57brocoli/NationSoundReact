@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios'
 import { figure } from '../../../Assets/Variables/Variable';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,7 +31,7 @@ const ActualiteComponent = ({view, state}) => {
                     <article className='text-white py-4'>
                         <div className='pb-2 container'>
                             <div className='d-flex justify-content-between mb-1'>
-                                <h2>Actualité</h2>
+                                <h2>Actualités</h2>
                             </div>
                             <hr className='container my-0'/>
                         </div>

@@ -3,6 +3,7 @@ import { figure } from '../../../Assets/Variables/Variable';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProgramme } from '../../../../redux/reducers/prgrammeReducers';
 import Journée from './SousComposants/Journée';
+import { AnimatePresence } from 'framer-motion';
 
 const ProgrammeConponent = ({view, state}) => {
 
@@ -14,21 +15,21 @@ const ProgrammeConponent = ({view, state}) => {
     },[dispatch])
 
     // Si l'on reussit à avoir le programme
+    let days = ([])
     if (programme) {
         //on récupère les jours de l'évenement
-        var days = programme.map(day => day.name)
+        days = programme.map(day => day.name)
     }
 
     // filtre pour les journées
     const[dayFilter, setDayFilter] = useState(null)
-
-    //fonction pour filtrer les journée
+    
+    //fonction pour filtrer les journées
     const filterProgramme = (programme) => {
-        return programme
-            .filter(day => dayFilter ? day.name === dayFilter : true)
+        return programme.filter(day => dayFilter ? day.name === dayFilter : true)
     }
     
-    // Tableau des journée filtrer
+    // Tableau des journées filtrées
     const programmeFiltrer = filterProgramme(programme)
 
     return (
@@ -64,13 +65,23 @@ const ProgrammeConponent = ({view, state}) => {
                         }
                     </div>
                 </section>
-                <section className='mt-4'>
-                    {programmeFiltrer.map(day => {
-                        return(
-                            <Journée day={day} key={day.id}/>
-                        )
-                    })}
-                </section>
+                {dayFilter ?
+                    <AnimatePresence>
+                        {programmeFiltrer.map(day => {
+                            return(
+                                <Journée day={day} key={day.id}/>
+                            )
+                        })}
+                    </AnimatePresence>
+                    :
+                    <section className=''>
+                        {programme.map(day => {
+                            return(
+                                <Journée day={day} key={day.id}/>
+                            )
+                        })}
+                    </section>
+                }
             </main>
         </>
     );

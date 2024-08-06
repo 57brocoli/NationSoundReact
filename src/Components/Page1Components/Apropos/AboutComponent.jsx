@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import RequesteForm from '../../Formulaires/RequesteForm';
 import { figure } from '../../../Assets/Variables/Variable';
-import ModalImage from '../../SubComponent/ModalImage';
 import Image from './SousComposants/Image';
 
 const AboutComponent = ({view, state}) => {
@@ -32,7 +31,7 @@ const AboutComponent = ({view, state}) => {
                                             section.images.map((image, index)=>{
                                                 return (
                                                     // <div key={index} style={{backgroundImage:`url(${figure.uri}${image.name})`}} className='carrouselImage centerImage rounded m-lg-1 image' onClick={openModalImage}></div>
-                                                    <Image key={index} image={image}/>
+                                                    <Image key={index} image={image} index={index}/>
                                                 )
                                             })
                                         }

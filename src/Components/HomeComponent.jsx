@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLieux } from '../../redux/reducers/LieuxReducers';
 import { figure, imageLieu, useDimention } from '../Assets/Variables/Variable';
+import {motion} from 'framer-motion'
 
 const HomeComponent = ({view}) => {
 
@@ -21,6 +22,8 @@ const HomeComponent = ({view}) => {
     useEffect(()=>{
         dispatch(fetchLieux());
     },[dispatch])
+
+    const [sceneScreenOpen, setSceneScreenOpen] = useState(false)
 
     return (
         <div>
@@ -60,6 +63,7 @@ const HomeComponent = ({view}) => {
                                         <div className='container d-xl-flex'>
                                             {section.images && 
                                                 section.images.map((img, index)=>{
+                                                    console.log(section);
                                                     return(
                                                         <div key={index} style={{backgroundImage:`url(${figure.uri}${img.name})`}} className='container carrouselImage centerImage rounded'></div>
                                                     )

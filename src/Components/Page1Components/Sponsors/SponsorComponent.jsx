@@ -8,10 +8,11 @@ const SponsorComponent = ({view, state}) => {
 
     const dispatch = useDispatch()
     const sponsors = useSelector(state => state.sponsors.sponsors)
-    console.log(sponsors);
     useEffect(()=>{
         dispatch(fetchSponsors())
     },[dispatch])
+
+    console.log(state);
 
     return (
         <div>
@@ -27,14 +28,15 @@ const SponsorComponent = ({view, state}) => {
                 <h5 className='text-center text-white container py-4'>{view.headerText}</h5>
                 
                 {sponsors ?
-                sponsors.map(sponsor => {
+                sponsors.map((sponsor, index) => {
                     return(
-                        <SponsorCard key={sponsor.id} sponsor={sponsor}/>
+                        <SponsorCard key={sponsor.id} sponsor={sponsor} index={index}/>
                     )
                 })
                 :
                 'Un problème est survenu.'
                 }
+                
             </main>
         </div>
     );

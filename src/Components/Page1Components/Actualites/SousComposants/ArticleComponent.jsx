@@ -44,7 +44,7 @@ const ArticleComponent = () => {
             {articleFiltrer.length >= 3 ?
                 nombreArticle === 3 ?
                     <button className="btn text-white fs-5 ps-0" onClick={tousAfficher}>
-                        Tous afficher
+                        Tout afficher
                     </button>
                 :
                     <button type="button" className="btn text-white fs-5 ps-0" onClick={()=>setNombreArticle(3)}>
@@ -54,7 +54,7 @@ const ArticleComponent = () => {
             null
             }
             <button type="button" className="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
-                Category
+                Catégories
             </button>
             <ul className="dropdown-menu ">
                 {selectCategories && 
@@ -70,9 +70,9 @@ const ArticleComponent = () => {
                 Réinitialisé
             </button>
             }
-            {articleFiltrer.map(article=>{
+            {articleFiltrer.map((article, index)=>{
                 return(
-                    <ArticleCards key={article.id} article={article}/>
+                    <ArticleCards key={article.id} article={article} index={index}/>
                 )
             })}
         </div>

@@ -1,8 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ProgrammeArtisteCards from './ProgrammeArtisteCards';
 import moment from 'moment';
 
 function EpisodeListe({ scene, episodes, artisteFiltre }) {
+
+    ///////////////////////////////////////////Fonction pour le contenu du programme/////////////////////////////////////
+
     // Fonction pour filtrer et trier les épisodes
     const filterAndSortEpisodes = (episodes) => {
         return episodes
@@ -17,91 +20,90 @@ function EpisodeListe({ scene, episodes, artisteFiltre }) {
     // Obtenir les épisodes filtrés et triés
     const episodesOrdoner = filterAndSortEpisodes(episodes);
 
-    //Fonction pour scroller vers la droite et la gauche
-    const containerRef = useRef(null)
-    const next = () => {
+    ////////////////////////////////////////Fonction pour les fonctionnalité de la page/////////////////////////////////////
+    
+    // Références pour le conteneur et la liste
+    const containerRef = useRef(null);
+
+    // Fonction pour faire défiler vers la droite
+    const scrollRight = useCallback(() => {
         if (containerRef.current) {
-            containerRef.current.scrollBy({
-                left: 170,
-                behavior: 'smooth'
-            });
+        containerRef.current.scrollBy({
+            left: 170,
+            behavior: 'smooth'
+        });
         }
-    }
-    const prev = () => {
+    }, []);
+
+    // Fonction pour faire défiler vers la gauche
+    const scrollLeft = useCallback(() => {
         if (containerRef.current) {
-            containerRef.current.scrollBy({
-                left: -170,
-                behavior: 'smooth'
-            });
+        containerRef.current.scrollBy({
+            left: -170,
+            behavior: 'smooth'
+        });
         }
-    }
+    }, []);
 
-    //Fonction pour avoir la largeur du contenaire de la liste des episodes
-    function useDimentionContainer() {
-        const [size, setSize] = useState(getCurrentDimension());
-        function getCurrentDimension(){
-          return {
-            width: containerRef.current && containerRef.current.offsetWidth,
-          }
+    // Fonction pour démarrer le défilement continu
+    const [intervalId, setIntervalId] = useState(null);
+
+    // Fonction pour faire défiler en continuer à droite
+    const startScrollingRight = useCallback(() => {
+        if (intervalId) clearInterval(intervalId);
+        const id = setInterval(scrollRight, 170); 
+        setIntervalId(id);
+    }, [intervalId, scrollRight]);
+
+    // Fonction pour faire défiler en continuer à gauche
+    const startScrollingLeft = useCallback(() => {
+        if (intervalId) clearInterval(intervalId);
+        const id = setInterval(scrollLeft, 170); 
+        setIntervalId(id);
+    }, [intervalId, scrollLeft]);
+
+    // Fonction pour stoper le défilement en continu
+    const stopScrolling = useCallback(() => {
+        if (intervalId) {
+        clearInterval(intervalId);
+        setIntervalId(null);
         }
-        useEffect(() => {
-              const updateDimension = () => {
-                    setSize(getCurrentDimension())
-              }
-              window.addEventListener('resize', updateDimension);
-              return(() => {
-                  window.removeEventListener('resize', updateDimension);
-              })
-        }, [size])
-        return size
-    }
-    const containerlisteArtiste = useDimentionContainer()
-
-    //Fonction pour avoir la largeur de la liste des épisodes
-    const listeRef = useRef(null)
-    function useDimentionListe() {
-        const [size, setSize] = useState(getCurrentDimension());
-        function getCurrentDimension(){
-          return {
-            width: listeRef.current && listeRef.current.offsetWidth,
-          }
-        }
-        useEffect(() => {
-              const updateDimension = () => {
-                    setSize(getCurrentDimension())
-              }
-              window.addEventListener('resize', updateDimension);
-              return(() => {
-                  window.removeEventListener('resize', updateDimension);
-              })
-        }, [size])
-        return size
-    }
-    const listeArtiste = useDimentionListe()
-
-    useEffect(() => {
-        useDimentionContainer
-        useDimentionListe
-    }, [])
+    }, [intervalId]);
 
     return (
         <section className='listContainer'>
-            <div onClick={prev} className='ContainerBtnProgListe'>
-                {containerlisteArtiste.width < listeArtiste.width && 
-                <p className='btnProgListe prevProg'>&larr;</p>
-                }
+            <div className='ContainerBtnProgListe'>
+                {/* {containerlisteArtiste.width < listeArtiste.width &&  */}
+                <p
+                onClick={scrollLeft}
+                onMouseDown={startScrollingLeft}
+                onMouseUp={stopScrolling}
+                onMouseLeave={stopScrolling}
+                onTouchStart={startScrollingLeft}
+                onTouchEnd={stopScrolling} className='btnProgListe prevProg'>
+                    &larr;
+                </p>
+                {/* // } */}
             </div>
             <div className='ContainerlisteArtiste scrollx' ref={containerRef}>
-                <div className='listeArtiste' ref={listeRef}>
+                <div className='listeArtiste'>
                     {episodesOrdoner.map((episode, index) => (
                         <ProgrammeArtisteCards episode={episode} key={episode.id} index={index}/>
                     ))}
                 </div>
             </div>
-            <div onClick={next} className='ContainerBtnProgListe'>
-                {containerlisteArtiste.width < listeArtiste.width && 
-                <p className='btnProgListe nextProg'>&rarr;</p>
-                }
+            <div className='ContainerBtnProgListe'>
+                {/* {containerlisteArtiste.width < listeArtiste.width &&  */}
+                <p
+                onClick={scrollRight}
+                onMouseDown={startScrollingRight}
+                onMouseUp={stopScrolling}
+                onMouseLeave={stopScrolling}
+                onTouchStart={startScrollingRight}
+                onTouchEnd={stopScrolling} className='btnProgListe nextProg'>
+                    &rarr;
+                </p>
+                {/* } */}
             </div>
         </section>
         
