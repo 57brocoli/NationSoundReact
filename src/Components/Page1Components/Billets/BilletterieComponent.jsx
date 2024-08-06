@@ -27,7 +27,7 @@ const BilletterieComponent = ({view}) => {
                     {billets &&
                         billets.map((billet, index)=>{
                             return(
-                                <div key={index} className='my-3'>
+                                <div key={index} className='billet'>
                                     <div style={{backgroundImage:`url(${imgBillet.uri}${billet.featuredImage})`}} className='imgBillet centerImage rounded' onClick={redirect}>
                                         <h2 className='p-3'>{billet.name}</h2>
                                         <p className='px-3'>{billet.description}</p>

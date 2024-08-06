@@ -20,19 +20,6 @@
 .doc{
     margin-top: 57px;
 }
-.scrollx{
-    overflow-x: auto;
-}
-.scrollx::-webkit-scrollbar{
-    background: transparent;
-    border-radius: 100vh;
-}
-
-.scrollx:hover::-webkit-scrollbar-thumb{
-    background: hsl(300 45% 50% /1);
-    border: .17em solid hsl(250 45% 50% /1);
-    border-radius: 100vh;
-}
 
 .centerimg{
     background-position: top;
@@ -76,15 +63,32 @@
     height: 200px;
     max-width: 380px;
     min-width: 300px;
-
 }
 .uniqImg{
     height: 400px;
     width: 100%;
 }
 .backgroundColor{
-    background: linear-gradient(#f1793c, #6c24dd, #5dd29b);
-    /* background: radial-gradient(circle at 0% 12%, #f1e469 5%, #6c24dd 25.5%, #5dd29b 62.3%, rgb(215, 248, 247) 93.8%); */
+    /* background: linear-gradient(#f1793c, #6c24dd, #5dd29b); */
+    /* background-image: linear-gradient(to bottom, #1c043c, #003b78, #006f9d, #00a2a4, #5dd29b); */
+    /* background-image: linear-gradient(-225deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%); */
+    background: radial-gradient(circle at 0% 12%, #f1e469 5%, #6c24dd 25.5%, #5dd29b 62.3%);
+}
+.backgroundColorBox{
+    background-color: #6b24dd2f;
+}
+.backgroundSat{
+    -webkit-filter: saturate(50%);
+    -moz-filter: saturate(50%);
+    filter: saturate(50%);
+    background-color: #ffffff17;
+    transition: filter 0.3s ease;
+}
+.backgroundSat:hover{
+    -webkit-filter: saturate(100%);
+    -moz-filter: saturate(100%);
+    filter: saturate(100%);
+    background-color: #ffffff00;
 }
 .btnRetour{
     position: absolute;
@@ -242,6 +246,18 @@
 }
 
 /* style pour la page billetterie */
+.billet{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    filter: saturate(70%);
+    border-radius: 7px;
+    margin-top: 20px;
+    transition: all 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.billet:hover{
+    box-shadow: 0 0 13px rgba(0, 0, 0, 1);
+    transform: scale(1.02);
+    filter: saturate(110%);
+}
 .imgBillet{
     height: 200px;
 }
@@ -250,7 +266,6 @@
 .btnFiltre{
     width: fit-content;
 }
-
 .cardProgramme{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -261,7 +276,6 @@
 }
 .journe1 {
     background-color:  #fe9a8b;
-    
 }
 .journe2 {
     background-color:  #8fd3f4;
@@ -269,6 +283,65 @@
 .journe3 {
     background-color:  #d57eeb;
 }
+.listContainer{
+    display: flex;
+    justify-content: center;
+}
+.ContainerlisteArtiste{
+    width: 90%;
+    background-color: #ffffff2c;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3)
+}
+.listeArtiste{
+    display: flex;
+    width: fit-content;
+}
+.progCard{
+    height: 200px;
+    min-width: 170px;
+    width: 170px;
+}
+.ContainerBtnProgListe{
+    width: 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.btnProgListe{
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.27);
+    width: 100%;
+    cursor: pointer;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 7px;
+    border-radius: 50%;
+}
+.scrollx {
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollx::-webkit-scrollbar {
+    display: none; 
+}
+/* .scrollx{
+    overflow-x: auto;
+}
+.scrollx::-webkit-scrollbar{
+    background: transparent;
+    border-radius: 100vh;
+}
+
+.scrollx:hover::-webkit-scrollbar-thumb{
+    background: hsl(300 45% 50% /1);
+    border: .17em solid hsl(250 45% 50% /1);
+    border-radius: 100vh;
+} */
 
 /* style pour la page actualité */
 .cardArticle{
@@ -338,6 +411,25 @@
 }
 
 /* style pour la page sponsors */
+.sponsorContainer{
+    width: 80%;
+    margin: auto;
+}
+.sponsor{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    -webkit-filter: saturate(70%);
+    -moz-filter: saturate(70%);
+    filter: saturate(70%);
+    transition: all 0.3s, box-shadow 0.3s, background 0.3s;
+    margin-top: 10px;
+}
+.sponsor:hover{
+    transform: scale(1.01);
+    -webkit-filter: saturate(110%);
+    -moz-filter: saturate(110%);
+    filter: saturate(110%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
 .sponsorName{
     font-size: 3.5em;
     font-family: 'raph';
@@ -389,6 +481,21 @@
 
 
 /* Style pour le formulaire de contact */
+.image{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    -webkit-filter: saturate(70%);
+    -moz-filter: saturate(70%);
+    filter: saturate(70%);
+    transition: all 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.image:hover{
+    transform: scale(1.02);
+    -webkit-filter: saturate(110%);
+    -moz-filter: saturate(110%);
+    filter: saturate(110%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
 .containerRequestForm{
     margin-top: 10px;
     margin-bottom: 15px;
@@ -473,13 +580,41 @@
     background-color: var(--gray);
     color: var(--gray_light);
 }
-
-
-/* //Style pour la page Hero */
-.pageCard{
-    box-shadow: 0px 0px 24px 7px rgba(0,0,0,0.54);
-    border-radius: 5px;
-    padding: 20px;
-    margin: 30px 0;
-    color: white;
+.modalImageShow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+.modalImageBackdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+.modalImageNone{
+    display: none;
+}
+.imageShow{
+    position: fixed;
+    top: 10%;
+    width: 90%;
+    height: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+}
+.closeImage{
+    font-size: 3em;
+    position: absolute;
+    right: 25px;
 }

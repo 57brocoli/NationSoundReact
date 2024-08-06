@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RequesteForm from '../../Formulaires/RequesteForm';
 import { figure } from '../../../Assets/Variables/Variable';
+import ModalImage from '../../SubComponent/ModalImage';
+import Image from './SousComposants/Image';
 
 const AboutComponent = ({view, state}) => {
 
@@ -26,13 +28,14 @@ const AboutComponent = ({view, state}) => {
                                     }
                                     <p className='text-center'>{section.content}</p>
                                     <div className='d-flex flex-wrap justify-content-center'>
-                                    {section.images && 
-                                        section.images.map((image, index)=>{
-                                            return (
-                                                <div key={index} style={{backgroundImage:`url(${figure.uri}${image.name})`}} className='carrouselImage centerImage rounded'></div>
-                                            )
-                                        })
-                                    }
+                                        {section.images && 
+                                            section.images.map((image, index)=>{
+                                                return (
+                                                    // <div key={index} style={{backgroundImage:`url(${figure.uri}${image.name})`}} className='carrouselImage centerImage rounded m-lg-1 image' onClick={openModalImage}></div>
+                                                    <Image key={index} image={image}/>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </article>
                             )

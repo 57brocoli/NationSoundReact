@@ -100,7 +100,7 @@ function RequesteForm() {
 
     return (
         <div className="containerRequestForm">
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form onSubmit={handleSubmit} className="contact-form backgroundColorBox">
                 <div className="form-group mt-2">
                     <label htmlFor="lastname">Nom :</label>
                     <input type="text" id="lastname" name="lastname" value={formData.lastname} onChange={handleChange} required />

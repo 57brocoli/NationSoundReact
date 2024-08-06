@@ -32,7 +32,6 @@ const ActualiteComponent = ({view, state}) => {
                         <div className='pb-2 container'>
                             <div className='d-flex justify-content-between mb-1'>
                                 <h2>Actualité</h2>
-                                
                             </div>
                             <hr className='container my-0'/>
                         </div>

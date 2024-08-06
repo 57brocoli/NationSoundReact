@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ProgrammeArtisteCards from './ProgrammeArtisteCards';
 import moment from 'moment';
 
@@ -17,12 +17,94 @@ function EpisodeListe({ scene, episodes, artisteFiltre }) {
     // Obtenir les épisodes filtrés et triés
     const episodesOrdoner = filterAndSortEpisodes(episodes);
 
+    //Fonction pour scroller vers la droite et la gauche
+    const containerRef = useRef(null)
+    const next = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollBy({
+                left: 170,
+                behavior: 'smooth'
+            });
+        }
+    }
+    const prev = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollBy({
+                left: -170,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    //Fonction pour avoir la largeur du contenaire de la liste des episodes
+    function useDimentionContainer() {
+        const [size, setSize] = useState(getCurrentDimension());
+        function getCurrentDimension(){
+          return {
+            width: containerRef.current && containerRef.current.offsetWidth,
+          }
+        }
+        useEffect(() => {
+              const updateDimension = () => {
+                    setSize(getCurrentDimension())
+              }
+              window.addEventListener('resize', updateDimension);
+              return(() => {
+                  window.removeEventListener('resize', updateDimension);
+              })
+        }, [size])
+        return size
+    }
+    const containerlisteArtiste = useDimentionContainer()
+
+    //Fonction pour avoir la largeur de la liste des épisodes
+    const listeRef = useRef(null)
+    function useDimentionListe() {
+        const [size, setSize] = useState(getCurrentDimension());
+        function getCurrentDimension(){
+          return {
+            width: listeRef.current && listeRef.current.offsetWidth,
+          }
+        }
+        useEffect(() => {
+              const updateDimension = () => {
+                    setSize(getCurrentDimension())
+              }
+              window.addEventListener('resize', updateDimension);
+              return(() => {
+                  window.removeEventListener('resize', updateDimension);
+              })
+        }, [size])
+        return size
+    }
+    const listeArtiste = useDimentionListe()
+
+    useEffect(() => {
+        useDimentionContainer
+        useDimentionListe
+    }, [])
+
     return (
-        <div className='d-flex justify-content-between scrollx'>
-            {episodesOrdoner.map(episode => (
-                <ProgrammeArtisteCards episode={episode} key={episode.id} />
-            ))}
-        </div>
+        <section className='listContainer'>
+            <div onClick={prev} className='ContainerBtnProgListe'>
+                {containerlisteArtiste.width < listeArtiste.width && 
+                <p className='btnProgListe prevProg'>&larr;</p>
+                }
+            </div>
+            <div className='ContainerlisteArtiste scrollx' ref={containerRef}>
+                <div className='listeArtiste' ref={listeRef}>
+                    {episodesOrdoner.map((episode, index) => (
+                        <ProgrammeArtisteCards episode={episode} key={episode.id} index={index}/>
+                    ))}
+                </div>
+            </div>
+            <div onClick={next} className='ContainerBtnProgListe'>
+                {containerlisteArtiste.width < listeArtiste.width && 
+                <p className='btnProgListe nextProg'>&rarr;</p>
+                }
+            </div>
+        </section>
+        
     );
 }
 
