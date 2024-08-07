@@ -6,11 +6,11 @@ import { fetchArticles } from '../../../../../redux/reducers/ArticlesReducers';
 const ArticleComponent = () => {
 
     //On récupere les articles du redux
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const articles = useSelector(state=>state.articles.articles)
-    useEffect(()=>{
-        dispatch(fetchArticles())
-    },[dispatch])
+    // useEffect(()=>{
+    //     dispatch(fetchArticles())
+    // },[dispatch])
 
     // On récupéré les catégories
     var allMapCategories = articles.map((article)=>article.categories.name)

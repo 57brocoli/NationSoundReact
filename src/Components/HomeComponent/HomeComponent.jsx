@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLieux } from '../../redux/reducers/LieuxReducers';
-import { figure, imageLieu, useDimention } from '../Assets/Variables/Variable';
-import {motion} from 'framer-motion'
+import { fetchLieux } from '../../../redux/reducers/LieuxReducers';
+import { figure, useDimention} from '../../Assets/Variables/Variable';
+import ImageProgramme from './SousComposants/ImageProgramme';
+import CarouselHotel from './SousComposants/CarouselHotel';
+import ScrollBox from '../SubComponent/ScrollBox';
+import FilterHotel from './SousComposants/FilterHotel';
 
 const HomeComponent = ({view}) => {
 
@@ -23,8 +26,6 @@ const HomeComponent = ({view}) => {
         dispatch(fetchLieux());
     },[dispatch])
 
-    const [sceneScreenOpen, setSceneScreenOpen] = useState(false)
-
     return (
         <div>
             {view.headerImage &&
@@ -33,11 +34,11 @@ const HomeComponent = ({view}) => {
                 </header>    
             }
             <main className='text-center' style={{minHeight: height}}>
-                <h5 className='text-center text-white container pt-4'>{view.headerText}</h5>
+                <h5 className='text-center text-white container py-4'>{view.headerText}</h5>
                 {view && 
                     view.pageSections.map((section, index)=>{
                         return(
-                            <article key={index} className='py-4 text-white'>
+                            <article key={index} className='py-2 text-white'>
                                 {section.display === 'style1' &&
                                     <div>
                                         <h2 className='text-center h1 fw-bold'>{section.title}</h2>
@@ -60,12 +61,11 @@ const HomeComponent = ({view}) => {
                                     <div>
                                         <h2 className='text-center h1 fw-bold'>{section.title}</h2>
                                         <p className='text-center container'>{section.content}</p>
-                                        <div className='container d-xl-flex'>
+                                        <div className='container d-lg-flex'>
                                             {section.images && 
                                                 section.images.map((img, index)=>{
-                                                    console.log(section);
                                                     return(
-                                                        <div key={index} style={{backgroundImage:`url(${figure.uri}${img.name})`}} className='container carrouselImage centerImage rounded'></div>
+                                                        <ImageProgramme key={index} img={img} index={index}/>
                                                     )
                                                 })
                                             }
@@ -73,17 +73,8 @@ const HomeComponent = ({view}) => {
                                     </div>
                                 }
                                 {section.title === 'Hôtel' &&
-                                    <div className='container'>
-                                        <div className='d-flex scrollx py-2'>
-                                            {hotels
-                                            .map(hotel=>{
-                                                return(
-                                                    <NavLink key={hotel.id} to={`lieu/${hotel.id}`} className='slide rounded text-center mx-xl-4 d-flex flex-column justify-content-end text-decoration-none hotelImage' style={{backgroundImage:`url(${imageLieu.uri}${hotel.featuredImage})`}}>
-                                                        <p className='h5 fw-bold text-white text-center pb-3 mx-auto'>{hotel.name}</p>
-                                                    </NavLink>
-                                                )
-                                            })}
-                                        </div>
+                                    <div className='container p-0'>
+                                        <ScrollBox box={FilterHotel} data={hotels}/>
                                     </div>
                                 }
                                 <div className='mx-auto'>

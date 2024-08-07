@@ -9,11 +9,10 @@ import ArticleComponent from './SousComposants/ArticleComponent';
 const ActualiteComponent = ({view, state}) => {
 
     const faqs = useSelector(state => state.faqs.faqs)
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(fetchFaqs())
-    },[dispatch])
+    // const dispatch = useDispatch()
+    // useEffect(()=>{
+    //     dispatch(fetchFaqs())
+    // },[dispatch])
 
     return (
         <div>

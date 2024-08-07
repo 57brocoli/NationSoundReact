@@ -6,12 +6,11 @@ import { fetchArtistes } from '../../../../redux/reducers/ArtistesReducers';
 
 const ArtisteComponent = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const artistes = useSelector(state => state.artistes.artistes)
-    
-    useEffect(()=>{
-        dispatch(fetchArtistes())
-    },[dispatch])
+    // useEffect(()=>{
+    //     dispatch(fetchArtistes())
+    // },[dispatch])
 
     return (
         <div className='doc container '>

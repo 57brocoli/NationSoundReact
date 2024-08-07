@@ -8,7 +8,7 @@ function ModalImage({show, handleCloseModal, image}) {
             {show && (
                 <div className='modalImageShow' tabIndex="-1">
                     <motion.div
-                        className='modalImageBackdrop'
+                        className='modalBackdrop'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
