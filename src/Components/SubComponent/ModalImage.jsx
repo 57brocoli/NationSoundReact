@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { figure } from '../../Assets/Variables/Variable'
 import {AnimatePresence, motion} from 'framer-motion'
 
-function ModalImage({show, handleCloseModal, image}) {
+function ModalImage({show, handleCloseModal, image, source}) {
     return (
         <AnimatePresence>
             {show && (
@@ -20,11 +20,11 @@ function ModalImage({show, handleCloseModal, image}) {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.7 }}
                         transition={{ ease: "easeOut", duration: 0.2 }}
-                        style={{ backgroundImage: `url(${figure.uri}${image.name})`}}
+                        style={{ backgroundImage: `url(${source.uri}${image.name})`}}
                         className='modalImageContainer'
                     >
                         <img
-                            src={`${figure.uri}${image.name}`}
+                            src={`${source.uri}${image.name}`}
                             alt="Modal Content"
                             className='imageShow'
                         />

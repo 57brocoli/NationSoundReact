@@ -1,18 +1,9 @@
-import React, { useEffect } from 'react';
-import axios from 'axios'
+import React from 'react';
 import { figure } from '../../../Assets/Variables/Variable';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchFaqs } from '../../../../redux/reducers/FaqReducers';
 import FaqComponent from './SousComposants/FaqComponent';
 import ArticleComponent from './SousComposants/ArticleComponent';
 
 const ActualiteComponent = ({view, state}) => {
-
-    const faqs = useSelector(state => state.faqs.faqs)
-    // const dispatch = useDispatch()
-    // useEffect(()=>{
-    //     dispatch(fetchFaqs())
-    // },[dispatch])
 
     return (
         <div>
@@ -40,13 +31,8 @@ const ActualiteComponent = ({view, state}) => {
                 <section>
                     <article className='text-white py-4'>
                         <h2 className='container'>FAQ</h2>
-                        {faqs &&
-                            faqs.map(faq=>{
-                                return(
-                                    <FaqComponent key={faq.id} faq={faq}/>
-                                )
-                            })
-                        }
+                        <FaqComponent/>
+                        
                     </article>
                 </section>
             </main>

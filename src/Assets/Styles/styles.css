@@ -144,25 +144,11 @@
 .backgroundColorBox{
     background-color: #6b24dd2f;
 }
-.backgroundSat{
-    -webkit-filter: saturate(50%);
-    -moz-filter: saturate(50%);
-    filter: saturate(50%);
-    background-color: #ffffff17;
-    transition: filter 0.3s ease;
-}
-.backgroundSat:hover{
-    -webkit-filter: saturate(100%);
-    -moz-filter: saturate(100%);
-    filter: saturate(100%);
-    background-color: #ffffff00;
-}
 .btnRetour{
     position: absolute;
 }
 
 /**************************************************** Style pour la page d'acceuil ****************************************/
-
 /* style pour la page de connexion */
 .formRegLog{
     max-width: 1000px;
@@ -271,7 +257,7 @@
     cursor: pointer;
     z-index: 5;
 } */
-.overlay{
+/* .overlay{
     position: absolute;
     height: 100%;
     width: 100%;
@@ -281,7 +267,7 @@
 }
 .overlay.active{
     display: block;
-}
+} */
 /* @media only screen and (max-width: 480px) {
     .slider {
         padding: 0;
@@ -781,3 +767,4 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+

@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
 import CommentForm from '../../Formulaires/CommentForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { imageArticle, imageArticleDiapo } from '../../../Assets/Variables/Variable';
-import { fetchArticles } from '../../../../redux/reducers/ArticlesReducers';
+import { imageArticle, imageArticleDiapo, useModal, useScrollFunction } from '../../../Assets/Variables/Variable';
 import ConnectOrAuthModal from '../../SubComponent/ConnectOrAuthModal';
+import ScrollBox from '../../SubComponent/ScrollBox'
+import FilterImages from './SousComposants/FilterImages';
+import { fetchArticles } from '../../../../redux/reducers/ArticlesReducers';
 
 const ArticleComponent = ({id}) => {
 
     //On récupere les articles du redux
     const dispatch = useDispatch()
-    const articles = useSelector(state => state.articles.articles)
+        useEffect(()=>{
+            dispatch(fetchArticles())
+        },[dispatch])
+    const articles = useSelector(state=>state.articles.articles)
     const user = useSelector(state => state.user.user)
-    useEffect(()=>{
-        dispatch(fetchArticles())
-    },[dispatch])
 
     //On récupère l'article
     const [article, setArticle] = useState(null)
@@ -23,36 +25,13 @@ const ArticleComponent = ({id}) => {
         setArticle(articleCible);
     }, [articles, id]);
 
-    //fonction pour le slider des images
-    function prev(){
-        document.getElementById('slider-container').scrollLeft -= 270;
-    }
-    function next(){
-        document.getElementById('slider-container').scrollLeft += 270;
-    }
+///////////////////////////////////////////////////Fonction pour les modal ///////////////////////////////////////////
+    const {
+        modal,
+        openModal,
+        handleCloseModal
+    } = useModal()
 
-    //Pour ouvrir la modal de connexion
-    const openConnecModal = () => {
-        setModal({
-            ...modal,
-            show: true
-        });
-    }
-
-    //Initialisation des données pour la modal
-    const [modal, setModal] = useState({
-        show : false,
-        title : '',
-        body : ''
-    })
-
-    //Fonction pour fermer la modal
-    const handleCloseModal = () => {
-        setModal({
-          ...modal,
-          show: false
-        });
-    };
     return (
         <div className='mt-5'>
             {article &&
@@ -73,25 +52,14 @@ const ArticleComponent = ({id}) => {
                         <p className='text-white'>
                             {article.content}
                         </p>
-                        <section>
-                            <div id="slider-container" className="slider d-flex container">
-                                <div onClick={prev} className="control-prev-btn">
-                                    <i className="fas fa-arrow-left"></i>
-                                </div>
-                                {article.images.map((img, index)=>{
-                                    return(
-                                        <div key={index} style={{backgroundImage:`url(${imageArticleDiapo.uri}${img.name})`}} className='slide rounded mx-xl-4 hotelImage' >
-                                            <p></p>
-                                        </div>
-                                    )
-                                })}
-                                <div onClick={next} className="control-next-btn">
-                                    <i className="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-                            <div className="overlay"></div>
-                        </section>
+                        
                     </article>
+                    {/* Section pour les images */}
+                    <section>
+                        <div className='container'>
+                            <ScrollBox data={article.images} box={FilterImages}/>
+                        </div>
+                    </section>
                     {/* Section pour les commentaires */}
                     <section className="commentsSection container">
                         {article.comments.length > 1 && 
@@ -114,12 +82,12 @@ const ArticleComponent = ({id}) => {
                         {user ?
                         <CommentForm id={article.id} article={article} setArticle={setArticle} user={user}/>
                         :
-                        <button className='btn btn-primary' onClick={openConnecModal}>Connectez vous pour commenter</button>
+                        <button className='btn btn-primary' onClick={openModal}>Connectez vous pour commenter</button>
                         }
                     </section>
                 </div>
             }
-            {openConnecModal &&
+            {modal &&
                 <ConnectOrAuthModal show={modal.show} handleClose={handleCloseModal}/>
             }
         </div>

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchLieux } from '../../../redux/reducers/LieuxReducers';
 import { figure, useDimention} from '../../Assets/Variables/Variable';
 import ImageProgramme from './SousComposants/ImageProgramme';
-import CarouselHotel from './SousComposants/CarouselHotel';
 import ScrollBox from '../SubComponent/ScrollBox';
 import FilterHotel from './SousComposants/FilterHotel';
 
@@ -15,16 +14,16 @@ const HomeComponent = ({view}) => {
     const height = h.height-57-175-59-400
 
     //fonction pour recupéré les hotels
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const lieux = useSelector(state => state.lieux.lieux)
     const user = useSelector(state => state.user.user); // Accéder à l'état de l'utilisateur
     const token = useSelector(state => state.user.token); // Accéder au token de l'utilisateur
     if (lieux) {
         var hotels = lieux.filter(lieux => lieux.category === 'Hotel')
     }
-    useEffect(()=>{
-        dispatch(fetchLieux());
-    },[dispatch])
+    // useEffect(()=>{
+    //     dispatch(fetchLieux());
+    // },[dispatch])
 
     return (
         <div>
