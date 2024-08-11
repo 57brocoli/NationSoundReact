@@ -4,15 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import {fetchLieux} from './../../../../redux/reducers/LieuxReducers'
 import { NavLink } from 'react-router-dom';
 import DayComposant from './SousComposants/DayComposant';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const LieuComponent = ({id}) => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const lieus = useSelector(state => state.lieux.lieux)
-    
-    useEffect(()=>{
-       dispatch(fetchLieux())
-    },[dispatch])
+    // useEffect(()=>{
+    //    dispatch(fetchLieux())
+    // },[dispatch])
+
 
     let lieu = []
     let days = []
@@ -55,18 +56,26 @@ const LieuComponent = ({id}) => {
                         }
                     </article>
                     {lieu.category === 'Scene' &&
-                    <section className='container'>
-                        <button className='btn btn-outline-light container mt-4' onClick={()=>setShowProgramme(!showProgramme)}>Voir le programme de la scene</button>
-                        <div >
-                        {showProgramme &&
-                            days.map((day,index)=>{
-                                return(
-                                    <DayComposant key={index} day={day} episodes={episodes}/>
-                                )
-                            })
-                        }
-                        </div>
-                    </section>
+                        <section className='container'>
+                            <button className='btn btn-outline-light container mt-4' onClick={()=>setShowProgramme(!showProgramme)}>Voir le programme de la scene</button>
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={showProgramme}
+                                    initial={{ y: 10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: -10, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    {showProgramme &&
+                                        days.map((day,index)=>{
+                                            return(
+                                                <DayComposant key={index} day={day} episodes={episodes}/>
+                                            )
+                                        })
+                                    }
+                                </motion.div>
+                            </AnimatePresence>
+                        </section>
                     }
                 </section>
             }

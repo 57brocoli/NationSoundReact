@@ -32,7 +32,6 @@ const ActualiteComponent = ({view, state}) => {
                     <article className='text-white py-4'>
                         <h2 className='container'>FAQ</h2>
                         <FaqComponent/>
-                        
                     </article>
                 </section>
             </main>

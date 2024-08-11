@@ -14,7 +14,6 @@ const Page2 = ({artiste, article, episode, lieu}) => {
     const h = useDimention()
     const height = h.height-45-8-8-240
     
-console.log();
     return (
         <div className='doc backgroundColor' >
             <div style={{minHeight:height}}>

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import ProgrammeArtisteCards from '../Page1Components/Programme/SousComposants/ProgrammeArtisteCards'
 import ScrollBox from './ScrollBox'
 import FilterEpisode from '../HomeComponent/SousComposants/FilterEpisode'
+import moment from 'moment'
 
 function ModalProgramme({show, handleCloseModal, index}) {
 
@@ -27,7 +28,6 @@ function ModalProgramme({show, handleCloseModal, index}) {
     //On récupère les épisodes
     let episodes = ([])
     if (scene) {
-        //on récupère les episodes
         episodes = scene.episodes.map(episode => episode)
     }
     //On récupère les jours

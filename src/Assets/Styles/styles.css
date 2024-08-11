@@ -20,64 +20,7 @@
 .doc{
     margin-top: 57px;
 }
-/****************************************************** style pour les buttons */
-.btnChoice{
-    color: white;
-    background-color: var(--vert);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    width: 100px;
-}
-.ContainerBtnChoiceGroupe{
-    margin: auto;
-    display: flex;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    width: fit-content;
-}
-.btnChoiceGroupe{
-    color: white;
-    background-color: var(--vert);
-    padding: 10px;
-    border: none;
-    width: 100px;
-    display: flex;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.btnChoiceGroupe:hover{
-    background-color: #099654;
-}
-.btnChoiceGroupe:active{
-    transform: scale(0.95);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-}
-.btnChoiceGroupe:first-child{
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-.btnChoiceGroupe:last-child{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-.btnClose{
-    color: white;
-    background-color: var(--orange);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    width: 100px;
-    transition: 0.3s;
-}
-.btnClose:hover{
-    background-color: #e85e19;
-}
-.btnClose:active{
-    transform: scale(0.95);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-}
+
 .centerimg{
     background-position: top;
     background-size: cover;
@@ -143,6 +86,78 @@
 }
 .backgroundColorBox{
     background-color: #6b24dd2f;
+}
+/****************************************************** style pour les buttons */
+.btnPrimary{
+    color: white;
+    background-color: var(--mauveFonce);
+    padding: 10px 17px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    border:none;
+    transition: 0.1s
+}
+.btnPrimary:hover{
+    transform: scale(1.01);
+}
+.btnChoice{
+    color: white;
+    background-color: var(--vert);
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+}
+.ContainerBtnChoiceGroupe{
+    margin: auto;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    width: fit-content;
+}
+.btnChoiceGroupe{
+    color: white;
+    background-color: var(--vert);
+    padding: 10px;
+    border: none;
+    width: 100px;
+    display: flex;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btnChoiceGroupe:hover{
+    background-color: #099654;
+}
+.btnChoiceGroupe:active{
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+.btnChoiceGroupe:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.btnChoiceGroupe:last-child{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.btnClose{
+    color: white;
+    background-color: var(--orange);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    transition: 0.3s;
+}
+.btnClose:hover{
+    background-color: #e85e19;
+}
+.btnClose:active{
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 .btnRetour{
     position: absolute;
@@ -227,66 +242,8 @@
 .slider::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-/* .control-prev-btn {
-    position: absolute;
-    margin-top:150px; 
-    left: 0;
-    background-color: rgba(255,255,255,0.55);
-    height: 100px;
-    line-height: 100px;
-    width: 45px;
-    text-align: center;
-    box-shadow: 0 1px 3px #888;
-    user-select: none;
-    color: #444;
-    cursor: pointer;
-    z-index: 5;
-}
-.control-next-btn {
-    position: absolute;
-    margin-top:150px; 
-    right: 0;
-    background-color: rgba(255,255,255,0.55);
-    height: 100px;
-    line-height: 100px;
-    width: 45px;
-    text-align: center;
-    box-shadow: 0 1px 3px #888;
-    user-select: none;
-    color: #444;
-    cursor: pointer;
-    z-index: 5;
-} */
-/* .overlay{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: rgba(0,0,0,.45);
-    top: 0;
-    display: none;
-}
-.overlay.active{
-    display: block;
-} */
-/* @media only screen and (max-width: 480px) {
-    .slider {
-        padding: 0;
-    }
-    .slide {
-        padding: 16px 10px;
-    }
-    .slide img {
-        margin: 0;
-    }
-    .control-prev-btn {
-        display: none;
-    }
-    .control-next-btn {
-        display: none;
-    }
-} */
 
-/* style pour la page billetterie */
+/***************************************** style pour la page billetterie ***********************************************/
 .billet{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     filter: saturate(70%);
@@ -303,7 +260,7 @@
     height: 200px;
 }
 
-/* Style pour le programme */
+/*************************************************** Style pour le programme ***********************************************/
 .btnFiltre{
     width: fit-content;
 }
@@ -343,21 +300,8 @@
     min-width: 170px;
     width: 170px;
 }
-/* .scrollx{
-    overflow-x: auto;
-}
-.scrollx::-webkit-scrollbar{
-    background: transparent;
-    border-radius: 100vh;
-}
 
-.scrollx:hover::-webkit-scrollbar-thumb{
-    background: hsl(300 45% 50% /1);
-    border: .17em solid hsl(250 45% 50% /1);
-    border-radius: 100vh;
-} */
-
-/* style pour la page actualité */
+/************************************************ style pour la page actualité *******************************************/
 .cardArticle{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -371,21 +315,19 @@
     height: 200px;
 }
 .titleArticle{
-    /* height: 80px; */
-    /* overflow: hidden; */
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.5em; /* Ajustez la hauteur de ligne si nécessaire */
+    line-height: 1.5em;
     max-height: calc(3 * 1.5em); 
 }
 .contentArticle{
     overflow:hidden;
     height: 50px;
 }
-/* Style pour les commentaire */
+/*********************************** Style pour les commentaire */
 .commentsSection {
     margin: 0 auto;
     padding: 20px;
@@ -402,18 +344,15 @@
     background-color: #fff;
     border-radius: 5px;
 }
-
 .commentaireAutor {
     font-weight: bold;
     color: var(--blue);
     margin-bottom: 5px;
 }
-
 .commentaireContent {
     color: var(--mauveClaire);
     line-height: 1.6;
 }
-
 @media (max-width: 600px) {
     .commentsSection {
         padding: 10px;
@@ -424,7 +363,7 @@
     }
 }
 
-/* style pour la page sponsors */
+/************************************************* style pour la page sponsors *******************************************/
 .sponsorContainer{
     width: 80%;
     margin: auto;
@@ -463,26 +402,14 @@
         width: 130px;
     }
 }
-/* style pour la page d'artiste */
+
+/*************************************************** style pour la page d'artiste *************************************/
 .centerImageArtiste{
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
     height: 400px;
 }
-/* style pour le footer */
-#logoFooter{
-    height: 80px;
-    width: 80px;
-}
-.reaseauFooter{
-    height: 50px;
-    width: 50px;
-}
-#downFooter{
-    background-color: white;
-}
-/* Style pour la page artiste */
 .titleA{
     font-family: 'raph';
     font-size: 6em;
@@ -494,7 +421,7 @@
 }
 
 
-/* Style pour le formulaire de contact */
+/************************************************ Style pour le formulaire de contact *************************************/
 .image{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     -webkit-filter: saturate(70%);
@@ -525,25 +452,21 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 1000px;
     width: 100%;
-  }
-  
+}
 .contact-form .form-group {
     margin-bottom: 15px;
-  }
-  
+}  
 .contact-form label {
     display: block;
     margin-bottom: 5px;
     color: white;
-  }
-  
+}  
 .contact-form input, .contact-form textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
+}  
 .contact-form input[type="submit"] {
     background: var(--vert);
     color: white;
@@ -553,8 +476,7 @@
     font-size: 16px;
     border-radius: 4px;
     transition: background 0.3s;
-  }
-  
+}  
 .contact-form input[type="submit"]:hover {
     background: #4cae4c;
 }
@@ -564,7 +486,6 @@
 .textModal p{
     color: var(--mauveClaire);
 }
-
 .textModal button{
     background: var(--vert);
     color: white;
@@ -732,7 +653,6 @@
     height: 60%;
     width: 100%;
 }
-
 .scrollingContainer{
     display: flex;
     justify-content: space-between;
@@ -767,4 +687,26 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-
+/*****************************************************Style pour la map***************************************************/
+.boxEntrer{
+    background: radial-gradient(circle at 0% 12%, #f1e469 5%, #6c24dd 25.5%, #5dd29b 62.3%);
+    border-radius: 10px;
+    box-shadow:0 0 15px rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*************************************************** style pour le footer ************************************************/
+#logoFooter{
+    height: 80px;
+    width: 80px;
+}
+.reaseauFooter{
+    height: 50px;
+    width: 50px;
+}
+#downFooter{
+    background-color: white;
+}

@@ -1,8 +1,10 @@
 import React from 'react'
-import ProgrammeArtisteCards from '../../../Page1Components/Programme/SousComposants/ProgrammeArtisteCards'
 import moment from 'moment';
+import FilterDay from './FilterDay';
+import ScrollBox from '../../../SubComponent/ScrollBox';
 
 function DayComposant({day, episodes}) {
+
     //On fait une copie des épisodes
     const episodeArray = [...episodes]
     //Fonction qui ordone les episodes par ordre chronologique
@@ -15,17 +17,8 @@ function DayComposant({day, episodes}) {
 
     return (
         <section className='my-3'>
-            <h4 className='text-white'>{day}</h4>
-            <div className='d-flex scrollx'>
-            {episodesOrdoner
-                .filter(episode => episode.day.name == day)
-                .map(episode=>{
-                    return(
-                        <ProgrammeArtisteCards episode={episode} key={episode.id}/>
-                    )
-                }
-            )}
-            </div>
+            <h4 className='text-white text-center'>{day}</h4>
+            <ScrollBox data={episodesOrdoner} box={FilterDay} dayFilter={day} styles={"ContainerlisteArtiste"}/>
         </section>
     )
 }

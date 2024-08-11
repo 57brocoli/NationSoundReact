@@ -12,8 +12,6 @@ const SponsorComponent = ({view, state}) => {
         dispatch(fetchSponsors())
     },[dispatch])
 
-    console.log(state);
-
     return (
         <div>
             <header style={{backgroundImage:`url(${figure.uri}${view.headerImage.name})`}} className='centerImage'>

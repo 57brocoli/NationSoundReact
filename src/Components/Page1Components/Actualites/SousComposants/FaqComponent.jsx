@@ -1,13 +1,14 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchFaqs } from '../../../../../redux/reducers/FaqReducers';
 
 function FaqComponent() {
 
     const faqs = useSelector(state => state.faqs.faqs)
-    // const dispatch = useDispatch()
-    // useEffect(()=>{
-    //     dispatch(fetchFaqs())
-    // },[dispatch])
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(fetchFaqs())
+    },[dispatch])
 
     return (
         <>

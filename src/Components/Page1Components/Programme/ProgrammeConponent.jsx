@@ -8,11 +8,11 @@ import { AnimatePresence } from 'framer-motion';
 const ProgrammeConponent = ({view, state}) => {
 
     //recupération du programme
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const programme = useSelector(state => state.programme.programme)
-    // useEffect(()=>{
-    //     dispatch(fetchProgramme())
-    // },[dispatch])
+    useEffect(()=>{
+        dispatch(fetchProgramme())
+    },[dispatch])
 
     // Si l'on reussit à avoir le programme
     let days = ([])

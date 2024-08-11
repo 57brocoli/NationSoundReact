@@ -50,16 +50,16 @@ const HomeComponent = ({view}) => {
                                 {section.display === 'style2' &&
                                     <div key={index} style={{backgroundImage:`url(${figure.uri}${section.images[0].name})`}} className='centerImage rounded d-flex flex-column justify-content-evenly'>
                                         <h2 className='text-center h1 fw-bold '>{section.title}</h2>
-                                        <p className='text-center container '>{section.content}</p>
+                                        <p className='text-center container'>{section.content}</p>
                                         <div>
-                                            {section.title === 'Explorez le site' && <NavLink className='btn btn-primary m-3' to='/map'>Carte</NavLink>}
+                                            {section.title === 'Explorez le site' && <NavLink className='btnPrimary m-3' to='/map'>Carte</NavLink>}
                                         </div>
                                     </div>
                                 }
                                 {section.display === 'style3' &&
                                     <div>
                                         <h2 className='text-center h1 fw-bold'>{section.title}</h2>
-                                        <p className='text-center container'>{section.content}</p>
+                                        <p className='text-center container '>{section.content}</p>
                                         <div className='container d-lg-flex'>
                                             {section.images && 
                                                 section.images.map((img, index)=>{
@@ -73,12 +73,12 @@ const HomeComponent = ({view}) => {
                                 }
                                 {section.title === 'Hôtel' &&
                                     <div className='container p-0'>
-                                        <ScrollBox box={FilterHotel} data={hotels}/>
+                                        <ScrollBox box={FilterHotel} data={hotels} styles={"py-2"}/>
                                     </div>
                                 }
-                                <div className='mx-auto'>
-                                    {section.title === 'Programme' && <NavLink className='btn btn-primary m-3' to='/programme'>Programme</NavLink>}
-                                    {section.title === 'Nos remerciements' && <NavLink className='btn btn-primary m-3' to='/sponsor'>Sponsor</NavLink>}
+                                <div className='my-4'>
+                                    {section.title === 'Programme' && <NavLink className='btnPrimary' to='/programme'>Programme</NavLink>}
+                                    {section.title === 'Nos remerciements' && <NavLink className='btnPrimary' to='/sponsor'>Sponsor</NavLink>}
                                 </div>
                             </article>
                         )

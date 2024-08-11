@@ -82,7 +82,7 @@ const ArticleComponent = ({id}) => {
                         {user ?
                         <CommentForm id={article.id} article={article} setArticle={setArticle} user={user}/>
                         :
-                        <button className='btn btn-primary' onClick={openModal}>Connectez vous pour commenter</button>
+                        <button className='btnPrimary' onClick={openModal}>Connectez vous pour commenter</button>
                         }
                     </section>
                 </div>
