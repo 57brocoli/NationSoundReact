@@ -2,7 +2,7 @@ Bonjour à tous
 Ce ReadMe est destiné au jury de la DREET.
 
 -> Présentation : 
-Vous trouverez ici le code source du site web mobile "NationSound". Projet développé lors de ma formation Developpeur web et web mobile.
+Vous trouverez ici le code source du site web "NationSound". Projet développé lors de ma formation Developpeur web et web mobile.
 Ce projet a été développé avec la bibliothèque React. Le site est déployé à cette adresse : https://nationsound.pixelevent.site/
 Il s'agit d'interfaces utilisateurs pour un public qui désireux de connaître l'événement (Programme, artistes, actualitées...).
 Il existe une version mobile de ce projet, bien que la version mobile ne soit pas déployée, le code source est accessible ici :  https://github.com/57brocoli/NationSoundReactNative/
