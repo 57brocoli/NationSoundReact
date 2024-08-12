@@ -18,9 +18,8 @@
     font-family: 'raph';
 }
 .doc{
-    margin-top: 57px;
+    padding-top: 50px;
 }
-
 .centerimg{
     background-position: top;
     background-size: cover;
@@ -161,6 +160,125 @@
 }
 .btnRetour{
     position: absolute;
+}
+/************************************************** Style pour la barre de navigation ***************************************/
+.navBar{
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    background-color: var(--jaune);
+    z-index: 800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.navBar a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.navBar .home{
+    display: flex;
+    align-items: center;
+}
+.navBar .home .logo{
+    border-radius: 5px;
+}
+.navBar .home h1{
+    font-size: 1.2em;
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.navBar .menu{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    list-style: none;
+    text-decoration: none;
+    margin-bottom: 0;
+}
+.navBar .menu .btnProg {
+    display: flex;
+    gap: 0.3em;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+.navBar .menu .btnProg p {
+    margin-bottom: 0;
+}
+.navBar .menu .progMenu{
+    background-color: var(--jaune);
+    top: 65px;
+    position: absolute;
+    list-style: none;
+    padding: 1em;
+}
+.navBar .btnUser{
+    background-color: transparent;
+    border: none;
+}
+.navBar .boxAuthMenu{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    color: white;
+    font-weight: bold;
+}
+.navBar .authMenu{
+    background-color: var(--jaune);
+    color: white;
+    font-weight: bold;
+}
+.navBar .authMenu ul{
+    list-style: none;
+    padding: 0.7em 2em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.navBar .btnBurgeur{
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+.boxPhoneMenu{
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    left: 0;
+    z-index: 700;
+}
+.phoneMenu{
+    background-color: var(--jaune);
+    list-style: none;
+    padding-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding-bottom: 1em;
+}
+
+@media (max-width: 990px) {
+    .navBar .menu, .btnUser{
+        display: none;
+    }
+    .navBar .btnBurgeur{
+        display: block;
+    }
+}
+@media (min-width: 990px) {
+    .phoneMenu{
+        display: none;
+    }
 }
 
 /**************************************************** Style pour la page d'acceuil ****************************************/

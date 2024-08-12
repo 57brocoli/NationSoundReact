@@ -33,11 +33,11 @@ const ArticleComponent = ({id}) => {
     } = useModal()
 
     return (
-        <div className='mt-5'>
+        <div>
             {article &&
-                <div>
+                <div >
                     {article.images[0] &&
-                        <header style={{backgroundImage:`url(${imageArticleDiapo.uri}${article.images[0].name})`}} className='centerImage'>
+                        <header style={{backgroundImage:`url(${imageArticleDiapo.uri}${article.images[0].name})`}} className='centerImage doc'>
                         </header>
                     }
                     <article className='container text-white'>

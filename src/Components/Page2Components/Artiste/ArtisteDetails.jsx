@@ -18,7 +18,7 @@ const ArtisteDetails = ({id}) => {
     const [showOtherEpisode, setShowOtherEpisode] = useState(false)
 
     return (
-        <div >
+        <>
             {artiste && 
                 <section className='text-white'>
                     <article className='container-xl pt-xl-3'>
@@ -61,7 +61,7 @@ const ArtisteDetails = ({id}) => {
                     </section>
                 </section>
             }
-        </div>
+        </>
     );
 };
 
