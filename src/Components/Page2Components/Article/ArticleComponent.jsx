@@ -33,9 +33,9 @@ const ArticleComponent = ({id}) => {
     } = useModal()
 
     return (
-        <div>
+        <>
             {article &&
-                <div >
+                <div className='doc'>
                     {article.images[0] &&
                         <header style={{backgroundImage:`url(${imageArticleDiapo.uri}${article.images[0].name})`}} className='centerImage doc'>
                         </header>
@@ -90,7 +90,7 @@ const ArticleComponent = ({id}) => {
             {modal &&
                 <ConnectOrAuthModal show={modal.show} handleClose={handleCloseModal}/>
             }
-        </div>
+        </>
     );
 };
 

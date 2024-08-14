@@ -13,7 +13,7 @@ const ArtisteComponent = () => {
     },[dispatch])
 
     return (
-        <div className='doc container '>
+        <div className='doc container'>
             <h1 className='titleA text-center'>Artiste</h1>
             <hr className='text-white'/>
             {artistes &&

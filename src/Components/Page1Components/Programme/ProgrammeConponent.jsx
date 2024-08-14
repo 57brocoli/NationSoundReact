@@ -33,7 +33,7 @@ const ProgrammeConponent = ({view, state}) => {
     const programmeFiltrer = filterProgramme(programme)
 
     return (
-        <>
+        <div className='doc'>
             <header style={{backgroundImage:`url(${figure.uri}${view.headerImage.name})`}} className='centerImage'>
                 <h1 className='text-center titlePage'>{view.name}</h1>
             </header>
@@ -83,7 +83,7 @@ const ProgrammeConponent = ({view, state}) => {
                     </section>
                 }
             </main>
-        </>
+        </div>
     );
 };
 

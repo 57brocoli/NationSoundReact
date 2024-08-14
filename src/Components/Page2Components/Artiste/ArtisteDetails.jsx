@@ -3,6 +3,7 @@ import EpisodeArtisteCards from './SousComposants/EpisodeArtisteCards';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { imageArtiste } from '../../../Assets/Variables/Variable';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ArtisteDetails = ({id}) => {
 
@@ -14,13 +15,24 @@ const ArtisteDetails = ({id}) => {
         //On récupèree uniquement l'artiste qui à le meme id
         artiste = artistes.find(artiste => artiste.id === Number(id))
     }
-    
+
+    //On recupère les épisodes du reducer
+    const Allepisodes = useSelector(state => state.episodes.episodes)
+
+    let episodes
+    let days
+    if (Allepisodes) {
+        episodes = Allepisodes.filter(episode => episode.artiste.name === artiste.name)
+        const alldays = episodes.map(e=>e.day.name)
+        days = [...new Set(alldays)]
+    }
+    console.log(episodes);
     const [showOtherEpisode, setShowOtherEpisode] = useState(false)
 
     return (
         <>
             {artiste && 
-                <section className='text-white'>
+                <section className='text-white doc'>
                     <article className='container-xl pt-xl-3'>
                         <div style={{backgroundImage:`url(${imageArtiste.uri}${artiste.featuredImage})`}} className='centerImageArtiste col-xl-4 float-xl-start mb-sm-2 me-sm-4 '>
                         </div>
@@ -44,18 +56,43 @@ const ArtisteDetails = ({id}) => {
                         {artiste.episodes.length > 1 &&
                         <div>
                             <button className='btn btn-outline-light container mt-4' onClick={()=>{setShowOtherEpisode(!showOtherEpisode)}}>Voir les autres passage sur scene</button>
-                            {showOtherEpisode && 
-                                <div className='d-flex pt-3 scrollx'>
-                                {artiste.episodes.map((episode, index)=>{
-                                        return(
-                                            <div key={index} >
-                                                <EpisodeArtisteCards episode={episode}/>
-                                            </div>
-                                        )
-                                    })
-                                }
-                                </div>
-                            }
+                            <AnimatePresence>
+                                <motion.div
+                                    key={showOtherEpisode}
+                                    initial={{ height:0, opacity: 0 }}
+                                    animate={{ height:"auto", opacity: 1 }}
+                                    exit={{ height:0, opacity: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    style={{ overflow: 'hidden' }}
+                                >
+                                    {showOtherEpisode && 
+                                        <div className='my-3'>
+                                            {days.map((day,index)=>{
+                                                return(
+                                                    <div key={index}>
+                                                        <h3>{day}</h3>
+                                                        <div className='d-flex'>
+                                                            {episodes
+                                                                .filter(e => e.day.name === day)
+                                                                .map((episode, index)=>{
+                                                                    console.log(episode);
+                                                                    return(
+                                                                        <div key={index} className='p-2'>
+                                                                            <EpisodeArtisteCards episode={episode}/>
+                                                                        </div>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })}
+                                            
+                                        </div>
+                                    }
+                                </motion.div>
+                            </AnimatePresence>
+                            
                             </div>
                         }
                     </section>

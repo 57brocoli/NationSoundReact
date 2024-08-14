@@ -18,7 +18,7 @@
     font-family: 'raph';
 }
 .doc{
-    padding-top: 50px;
+    padding-top: 60px;
 }
 .centerimg{
     background-position: top;
@@ -173,12 +173,17 @@
     justify-content: space-between;
     padding-left: 2em;
     padding-right: 2em;
+    user-select: none;
 }
-.navBar a{
+.navBar a, p{
     text-decoration: none;
     color: white;
     font-weight: bold;
     font-size: 1.2em;
+    margin-bottom: 0;
+}
+.navBar li{
+    list-style: none;
 }
 .navBar .home{
     display: flex;
@@ -202,15 +207,19 @@
     text-decoration: none;
     margin-bottom: 0;
 }
-.navBar .menu .btnProg {
+.btnProg {
     display: flex;
     gap: 0.3em;
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 0;
+    cursor: pointer;
+}
+.ulList{
+    box-shadow:inset 0 0 7px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 0.5em 0em;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
 }
 .navBar .menu .btnProg p {
     margin-bottom: 0;
@@ -220,23 +229,23 @@
     top: 65px;
     position: absolute;
     list-style: none;
-    padding: 1em;
+    padding: 1em 1.5em;
 }
 .navBar .btnUser{
-    background-color: transparent;
-    border: none;
+    cursor: pointer;
 }
 .navBar .boxAuthMenu{
     position: absolute;
-    top: 60px;
-    right: 0;
+    top: 65px;
+    right: 5px;
     color: white;
     font-weight: bold;
-}
-.navBar .authMenu{
     background-color: var(--jaune);
     color: white;
     font-weight: bold;
+    border-radius: 10px;
+    list-style: none;
+    padding: 1em 2em;
 }
 .navBar .authMenu ul{
     list-style: none;
@@ -259,14 +268,14 @@
 }
 .phoneMenu{
     background-color: var(--jaune);
+    margin-bottom: 0;
     list-style: none;
-    padding-top: 0.5em;
+    padding: 1em 2em;
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 1.5em;
     padding-bottom: 1em;
 }
-
 @media (max-width: 990px) {
     .navBar .menu, .btnUser{
         display: none;

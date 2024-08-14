@@ -6,7 +6,7 @@ import ArticleComponent from './SousComposants/ArticleComponent';
 const ActualiteComponent = ({view, state}) => {
 
     return (
-        <div>
+        <div className='doc'>
             <header style={{backgroundImage:`url(${figure.uri}${view.headerImage.name})`}} className='centerImage'>
                 <h1 className='text-center titlePage'>{view.name}</h1>
             </header>

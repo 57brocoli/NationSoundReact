@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { imageArtiste } from '../../../Assets/Variables/Variable';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEpisodes } from '../../../../redux/reducers/EpisodesReducers';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 const EpisodeComponent = ({id}) => {
@@ -20,18 +21,28 @@ const EpisodeComponent = ({id}) => {
     const episode = episodes.find(episode => episode.id === Number(id))
     
     //On récupère l'id de l'artiste
+    let artisteId = ""
     if (episode) {
-        var artisteId= episode.artiste.id
+        artisteId = episode.artiste.id
     }
     // Puis on récupère tous les épisodes que l'artiste anime
     const otherArtisteEpisode = episodes.filter(episode => episode.artiste.id === artisteId)
 
+    // On récupère les journées à partir des épisodes
+    let days = []
+    if (otherArtisteEpisode) {
+        const allDay = otherArtisteEpisode.map(e=>e.day.name)
+        if (allDay.length > 0) {
+            days = [...new Set(allDay)]
+        }
+    }
+
     const [showOtherEpisode, setShowOtherEpisode] = useState(false)
 
     return (
-        <div className=' text-white'>
+        <>
             {episode &&
-                <section>
+                <section className='text-white doc'>
                     <article className='container-xl pt-xl-3'>
                         <div style={{backgroundImage:`url(${imageArtiste.uri}${episode.artiste.featuredImage})`}} className='centerImageArtiste col-xl-4 float-xl-start mb-sm-2 me-sm-4 '>
                         </div>
@@ -55,22 +66,43 @@ const EpisodeComponent = ({id}) => {
                     </article>
                     <section className='container'>
                         <button className='btn btn-outline-light container mt-4' onClick={()=>{setShowOtherEpisode(!showOtherEpisode)}}>Voir les autres passage sur scene</button>
-                        {showOtherEpisode && 
-                            otherArtisteEpisode && 
-                                <div className='d-flex pt-3 scrollx'>
-                                    {otherArtisteEpisode.map((otherEpisode, index)=>{
-                                        return(
-                                            <div key={index}>
-                                                <EpisodeArtisteCards episode={otherEpisode}/>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                        }
+                        <AnimatePresence>
+                            <motion.div
+                                key={showOtherEpisode}
+                                initial={{ height:0, opacity: 0 }}
+                                animate={{ height:"auto", opacity: 1 }}
+                                exit={{ height:0, opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                style={{ overflow: 'hidden' }}
+                            >
+                                {showOtherEpisode && 
+                                    <div className='my-3'>
+                                        {days.map((jour, index) => {
+                                            return(
+                                                <div key={index}>
+                                                    <h3>{jour}</h3>
+                                                    <div className='d-flex'>
+                                                        {otherArtisteEpisode
+                                                            .filter(e => e.day.name === jour)
+                                                            .map((otherEpisode, index)=>{
+                                                            return(
+                                                                <div key={index}>
+                                                                    <EpisodeArtisteCards episode={otherEpisode}/>
+                                                                </div>
+                                                            )
+                                                        })}
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                }
+                            </motion.div>
+                        </AnimatePresence>
                     </section>
                 </section>
             }
-        </div>
+        </>
     );
 };
 

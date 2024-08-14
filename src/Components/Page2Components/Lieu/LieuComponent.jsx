@@ -35,9 +35,9 @@ const LieuComponent = ({id}) => {
     const[showProgramme, setShowProgramme] = useState(false)
     
     return (
-        <div>
+        <>
             {lieu &&
-                <section >
+                <section className='doc'>
                     <article className='container-xl pt-xl-3 text-white'>
                         <div style={{backgroundImage:`url(${imageLieu.uri}${lieu.featuredImage})`}} className='centerImageArtiste col-xl-4 float-xl-start mb-sm-2 me-sm-4 '>
                         </div>
@@ -79,7 +79,7 @@ const LieuComponent = ({id}) => {
                     }
                 </section>
             }
-        </div>
+        </>
     );
 };
 

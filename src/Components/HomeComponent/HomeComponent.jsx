@@ -26,7 +26,7 @@ const HomeComponent = ({view}) => {
     // },[dispatch])
 
     return (
-        <div>
+        <div className='doc'>
             {view.headerImage &&
                 <header style={{backgroundImage:`url(${figure.uri}${view.headerImage.name})`}} className='centerImage'>
                     <h1 className='text-center titlePage'>NationSound</h1>

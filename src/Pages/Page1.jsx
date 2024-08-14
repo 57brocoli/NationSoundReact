@@ -21,7 +21,7 @@ const Page1 = ({billetterie, about, programme, artiste, actualite, sponsor, map}
 
     // fonction pour avoir les dimention de l"ecran
     const h = useDimention()
-    const height = h.height-45-8-8-190    
+    const height = h.height-45-8-8-130
 
     return (
         <div className='backgroundColor'>

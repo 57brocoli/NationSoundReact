@@ -12,10 +12,10 @@ const Page2 = ({artiste, article, episode, lieu}) => {
     let { id } = useParams();
 
     const h = useDimention()
-    const height = h.height-45-8-8-240
+    const height = h.height-45-8-9-180
     
     return (
-        <div className='doc backgroundColor' >
+        <div className='backgroundColor' >
             <div style={{minHeight:height}}>
                 <Navigation/>
                 {artiste && <ArtisteDetails id={id}/>}
