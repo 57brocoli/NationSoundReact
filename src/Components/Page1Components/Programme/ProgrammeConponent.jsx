@@ -3,16 +3,12 @@ import { figure } from '../../../Assets/Variables/Variable';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProgramme } from '../../../../redux/reducers/prgrammeReducers';
 import Journée from './SousComposants/Journée';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ProgrammeConponent = ({view, state}) => {
 
     //recupération du programme
-    const dispatch = useDispatch()
     const programme = useSelector(state => state.programme.programme)
-    useEffect(()=>{
-        dispatch(fetchProgramme())
-    },[dispatch])
 
     // Si l'on reussit à avoir le programme
     let days = ([])
@@ -65,23 +61,21 @@ const ProgrammeConponent = ({view, state}) => {
                         }
                     </div>
                 </section>
-                {dayFilter ?
-                    <AnimatePresence>
-                        {programmeFiltrer.map(day => {
-                            return(
-                                <Journée day={day} key={day.id}/>
-                            )
-                        })}
-                    </AnimatePresence>
-                    :
-                    <section className=''>
-                        {programme.map(day => {
-                            return(
-                                <Journée day={day} key={day.id}/>
-                            )
-                        })}
-                    </section>
-                }
+                <AnimatePresence>
+                    <motion.div
+                        key={dayFilter ? 'filtered' : 'unfiltered'}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration:0.4 }}
+                    >
+                        <section>
+                            {(dayFilter ? programmeFiltrer : programme).map(day => (
+                                <Journée day={day} key={day.id} />
+                            ))}
+                        </section>
+                    </motion.div>
+                </AnimatePresence>
             </main>
         </div>
     );

@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ArticleCards from './ArticleCards';
 import { fetchArticles } from '../../../../../redux/reducers/ArticlesReducers';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ArticleComponent = () => {
 
     //On récupere les articles du redux
-    const dispatch = useDispatch()
     const articles = useSelector(state=>state.articles.articles)
-    useEffect(()=>{
-        dispatch(fetchArticles())
-    },[dispatch])
 
     // On récupéré les catégories
     var allMapCategories = articles.map((article)=>article.categories.name)
@@ -40,7 +37,7 @@ const ArticleComponent = () => {
     const articleFiltrer = filterArticle(articles)
 
     return (
-        <div className="container mb-3">
+        <div className="container mb-3  ">
             {articleFiltrer.length >= 3 ?
                 nombreArticle === 3 ?
                     <button className="btn text-white fs-5 ps-0" onClick={tousAfficher}>
@@ -70,11 +67,26 @@ const ArticleComponent = () => {
                 Réinitialisé
             </button>
             }
-            {articleFiltrer.map((article, index)=>{
-                return(
-                    <ArticleCards key={article.id} article={article} index={index}/>
-                )
-            })}
+            <div>
+            <AnimatePresence >
+                <motion.div
+                    key={articleFiltrer}
+                    initial={{ height:0, opacity: 0 }}
+                    animate={{ height:"auto", opacity: 1 }}
+                    exit={{ height:0, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    style={{ overflow: 'hidden' }}
+                    className='py-2 '
+                >
+                    {articleFiltrer.map((article, index)=>{
+                        return(
+                            <ArticleCards key={article.id} article={article} index={index}/>
+                        )
+                    })}
+                </motion.div>
+            </AnimatePresence>
+            </div>
+            
         </div>
     );
 };

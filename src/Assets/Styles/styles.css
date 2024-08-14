@@ -435,8 +435,8 @@
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 .cardArticle:hover{
-    transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.01);
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.3);
 }
 .imgArticle{
     height: 200px;
@@ -513,20 +513,21 @@
 .sponsorName{
     font-size: 3.5em;
     font-family: 'raph';
+    font-weight: 100;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 990px) {
     .sponsorName{
-        font-size: 2.5em;
+        font-size: 3em;
     }
 }
 .imgSponsor{
     height: 200px;
     width: 200px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 990px) {
     .imgSponsor{
-        height: 130px;
-        width: 130px;
+        height: 120px;
+        width: auto;
     }
 }
 
@@ -635,7 +636,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5em;
+    padding: 1em 0.5em;
     gap: 10px;
 }
 .ContainerProgramme::-webkit-scrollbar{
@@ -652,7 +653,7 @@
     height: 40px;
     width: 40px;
     background-color: rgba(255, 255, 255, 0.27);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     font-size: 2em;
     display: flex;

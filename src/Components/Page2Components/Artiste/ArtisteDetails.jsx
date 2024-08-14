@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EpisodeArtisteCards from './SousComposants/EpisodeArtisteCards';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { imageArtiste } from '../../../Assets/Variables/Variable';
 import { AnimatePresence, motion } from 'framer-motion';
+import { fetchEpisodes } from '../../../../redux/reducers/EpisodesReducers';
 
 const ArtisteDetails = ({id}) => {
 
@@ -17,7 +18,11 @@ const ArtisteDetails = ({id}) => {
     }
 
     //On recupère les épisodes du reducer
+    // const dispatch = useDispatch()
     const Allepisodes = useSelector(state => state.episodes.episodes)
+    // useEffect(()=>{
+    //     dispatch(fetchEpisodes())
+    // },[dispatch])
 
     let episodes
     let days
@@ -26,7 +31,6 @@ const ArtisteDetails = ({id}) => {
         const alldays = episodes.map(e=>e.day.name)
         days = [...new Set(alldays)]
     }
-    console.log(episodes);
     const [showOtherEpisode, setShowOtherEpisode] = useState(false)
 
     return (

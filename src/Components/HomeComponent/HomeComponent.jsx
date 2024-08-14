@@ -41,7 +41,7 @@ const HomeComponent = ({view}) => {
                                 {section.display === 'style1' &&
                                     <div>
                                         <h2 className='text-center h1 fw-bold'>{section.title}</h2>
-                                        <p className='text-center container'>{section.content}</p>
+                                        <p className='text-center container mb-3'>{section.content}</p>
                                         {section.images[0] &&
                                             <div key={index} style={{backgroundImage:`url(${figure.uri}${section.images[0].name})`}} className='container centerImage rounded'></div>
                                         }
@@ -59,7 +59,7 @@ const HomeComponent = ({view}) => {
                                 {section.display === 'style3' &&
                                     <div>
                                         <h2 className='text-center h1 fw-bold'>{section.title}</h2>
-                                        <p className='text-center container '>{section.content}</p>
+                                        <p className='text-center container mb-3'>{section.content}</p>
                                         <div className='container d-lg-flex'>
                                             {section.images && 
                                                 section.images.map((img, index)=>{

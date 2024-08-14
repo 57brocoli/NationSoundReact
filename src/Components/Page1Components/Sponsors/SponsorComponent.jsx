@@ -6,11 +6,7 @@ import { fetchSponsors } from '../../../../redux/reducers/SponsorsReducers';
 
 const SponsorComponent = ({view, state}) => {
 
-    const dispatch = useDispatch()
     const sponsors = useSelector(state => state.sponsors.sponsors)
-    useEffect(()=>{
-        dispatch(fetchSponsors())
-    },[dispatch])
 
     return (
         <div className='doc'>

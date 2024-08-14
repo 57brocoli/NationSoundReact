@@ -40,7 +40,7 @@ function Journée({day}) {
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             >
                 {day &&
                     <section className={`cardProgramme my-4 backgroundColorBox`}>

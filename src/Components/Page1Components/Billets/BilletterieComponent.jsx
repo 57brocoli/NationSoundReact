@@ -6,11 +6,7 @@ import Billet from './SousComposants/Billet';
 
 const BilletterieComponent = ({view}) => {
 
-    const dispatch = useDispatch()
     const billets = useSelector(state=> state.billets.billets)
-    useEffect(()=>{
-        dispatch(fetchBillets())
-    },[dispatch])
 
     return (
         <div className='doc'>

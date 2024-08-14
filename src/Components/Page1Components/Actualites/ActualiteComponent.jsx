@@ -29,8 +29,8 @@ const ActualiteComponent = ({view, state}) => {
                     </article>
                 </section>
                 <section>
-                    <article className='text-white py-4'>
-                        <h2 className='container'>FAQ</h2>
+                    <article className='text-white py-4 container'>
+                        <h2>FAQ</h2>
                         <FaqComponent/>
                     </article>
                 </section>

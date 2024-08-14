@@ -58,13 +58,14 @@ const LieuComponent = ({id}) => {
                     {lieu.category === 'Scene' &&
                         <section className='container'>
                             <button className='btn btn-outline-light container mt-4' onClick={()=>setShowProgramme(!showProgramme)}>Voir le programme de la scene</button>
-                            <AnimatePresence mode="wait">
+                            <AnimatePresence>
                                 <motion.div
                                     key={showProgramme}
-                                    initial={{ y: 10, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    exit={{ y: -10, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
+                                    initial={{ height:0, opacity: 0 }}
+                                    animate={{ height:'auto', opacity: 1 }}
+                                    exit={{ height:0, opacity: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    style={{ overflow: 'hidden' }}
                                 >
                                     {showProgramme &&
                                         days.map((day,index)=>{

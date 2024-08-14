@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { imageArticle } from '../../../../Assets/Variables/Variable';
-import {motion} from 'framer-motion'
+import {AnimatePresence, motion} from 'framer-motion'
 
 const ArticleCards = ({article, index}) => {
 
@@ -16,7 +16,7 @@ const ArticleCards = ({article, index}) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: index * 0.2 }}
         >
-            <NavLink className='my-2 d-flex text-decoration-none text-white cardArticle backgroundSat' to={`/article/${article.id}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <NavLink className='my-2 mx-3 d-flex text-decoration-none text-white cardArticle backgroundSat' to={`/article/${article.id}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <motion.div
                     initial={{ filter: 'saturate(50%)' }}
                     animate={{ filter: isHovered ? 'saturate(100%)' : 'saturate(50%)'}}
