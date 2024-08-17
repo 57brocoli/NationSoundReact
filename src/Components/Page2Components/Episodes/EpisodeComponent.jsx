@@ -79,9 +79,9 @@ const EpisodeComponent = ({id}) => {
                                     <div className='my-3'>
                                         {days.map((jour, index) => {
                                             return(
-                                                <div key={index}>
+                                                <div key={index} className='px-3 py-2'>
                                                     <h3>{jour}</h3>
-                                                    <div className='d-flex'>
+                                                    <div className='d-flex flex-wrap justify-content-center justify-content-md-start '>
                                                         {otherArtisteEpisode
                                                             .filter(e => e.day.name === jour)
                                                             .map((otherEpisode, index)=>{

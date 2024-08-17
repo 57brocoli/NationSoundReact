@@ -73,15 +73,15 @@ const ArtisteDetails = ({id}) => {
                                         <div className='my-3'>
                                             {days.map((day,index)=>{
                                                 return(
-                                                    <div key={index}>
+                                                    <div key={index} className='px-3 py-2'>
                                                         <h3>{day}</h3>
-                                                        <div className='d-flex'>
+                                                        <div className='d-flex flex-wrap justify-content-center justify-content-md-start'>
                                                             {episodes
                                                                 .filter(e => e.day.name === day)
                                                                 .map((episode, index)=>{
                                                                     console.log(episode);
                                                                     return(
-                                                                        <div key={index} className='p-2'>
+                                                                        <div key={index}>
                                                                             <EpisodeArtisteCards episode={episode}/>
                                                                         </div>
                                                                     )
